@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { CloudSystemBadge, DeveloperCredit } from './DeveloperCredit'
-import { APP_FEATURES, APP_ICON, APP_NAME, APP_TAGLINE, CLOUD_SYSTEM } from '../config/app'
+import { PlatformBadge, DeveloperCredit } from './DeveloperCredit'
+import { APP_FEATURES, APP_ICON, APP_NAME, APP_TAGLINE } from '../config/app'
 
 interface AuthLayoutProps {
   title: string
@@ -23,9 +23,8 @@ export function AuthLayout({ title, subtitle, children, footer, extra }: AuthLay
           <h1 className="max-w-lg text-4xl font-extrabold leading-tight tracking-tight">{APP_NAME}</h1>
           <p className="mt-4 max-w-md text-base leading-relaxed text-emerald-100/90">{APP_TAGLINE}</p>
           <div className="mt-5">
-            <CloudSystemBadge size="md" />
+            <PlatformBadge size="md" />
           </div>
-          <p className="mt-3 max-w-sm text-xs leading-relaxed text-slate-400">{CLOUD_SYSTEM.description}</p>
         </div>
         <div className="relative grid max-w-md grid-cols-2 gap-4">
           {APP_FEATURES.map((item) => (

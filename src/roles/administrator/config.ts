@@ -1,13 +1,13 @@
 import type { NavItem } from '../../types/nav'
 
 export const ADMIN_NAV: NavItem[] = [
-  { label: 'Dashboard', path: 'dashboard', icon: '📊' },
-  { label: 'Products', path: 'products', icon: '📦' },
-  { label: 'Analytics', path: 'analytics', icon: '📈' },
-  { label: 'Low Stock', path: 'low-stock', icon: '⚠️' },
-  { label: 'Users', path: 'users', icon: '👥' },
-  { label: 'Orders', path: 'orders', icon: '📋' },
-  { label: 'Reports', path: 'reports', icon: '📄' },
+  { label: 'Dashboard', path: 'dashboard' },
+  { label: 'Products', path: 'products' },
+  { label: 'Analytics', path: 'analytics' },
+  { label: 'Low Stock', path: 'low-stock' },
+  { label: 'Users', path: 'users' },
+  { label: 'Orders', path: 'orders' },
+  { label: 'Reports', path: 'reports' },
 ]
 
 export const ADMIN_COLOR = '#059669'

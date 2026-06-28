@@ -1,32 +1,31 @@
 export const APP_NAME = 'Feed track'
 
-export const APP_TAGLINE =
-  'A cloud based inventory forecasting and ordering management for feeds supply stores'
+export const APP_TAGLINE = 'Inventory forecasting & ordering for feeds supply stores'
 
 export const APP_DESCRIPTION =
-  'Cloud-based inventory forecasting and ordering management built for feeds supply stores.'
+  'Manage products, orders, stock levels, and demand forecasts in one unified platform — built for Philippine feed stores with ₱ pricing.'
 
-export const APP_DOCUMENT_TITLE = `${APP_NAME} — Cloud Feed Supply Management`
+export const APP_DOCUMENT_TITLE = `${APP_NAME} — Feed Supply Management`
 export const APP_HOME_TITLE = `${APP_NAME} — Home`
 
 export const APP_ICON = '🌾'
 
 export const DEVELOPER = {
-  name: 'Hiro Rosaki',
+  name: 'Raminder Jangao',
   role: 'Developer & System Architect',
-  initials: 'HR',
-  tagline: 'Architecting cloud-native feed supply experiences',
+  initials: 'RJ',
+  tagline: 'Crafting smart feed supply management systems',
 } as const
 
-export const CLOUD_SYSTEM = {
-  name: 'Feed track Cloud',
-  badge: '☁️ Cloud-Based System',
-  shortLabel: 'Cloud',
+export const PLATFORM = {
+  name: 'Feed track Platform',
+  badge: '🌾 Feed Supply Platform',
+  shortLabel: 'Platform',
   status: 'Live',
   description:
-    'A fully cloud-based platform — access dashboards anywhere, sync inventory & orders in real time, and scale your feeds supply store without local server installs.',
+    'Access dashboards anytime, sync inventory and orders in real time, and scale your feeds supply store with smart forecasting and role-based workspaces.',
   pillars: [
-    { label: 'Always online', icon: '🌐', detail: '24/7 cloud access from any device' },
+    { label: 'Always online', icon: '🌐', detail: '24/7 access from any device' },
     { label: 'Real-time sync', icon: '⚡', detail: 'Orders, stock & alerts update instantly' },
     { label: 'Role-secure', icon: '🔐', detail: 'Encrypted role-based workspaces' },
     { label: 'PH-ready', icon: '🇵🇭', detail: 'Philippine Peso (₱) built-in' },
@@ -105,8 +104,8 @@ export const SYSTEM_FLOW = [
 ] as const
 
 export const HOME_HIGHLIGHTS = [
-  { label: '4 role dashboards', value: '4' },
+  { label: 'Role dashboards', value: '4' },
   { label: 'Currency', value: '₱ PHP' },
   { label: 'Forecast window', value: '30 days' },
-  { label: 'Cloud-based', value: '24/7' },
+  { label: 'Always online', value: '24/7' },
 ] as const

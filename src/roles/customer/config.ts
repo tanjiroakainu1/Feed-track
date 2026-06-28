@@ -1,12 +1,12 @@
 import type { NavItem } from '../../types/nav'
 
 export const CUSTOMER_NAV: NavItem[] = [
-  { label: 'Dashboard', path: 'dashboard', icon: '🏠' },
-  { label: 'Browse', path: 'browse', icon: '🛍️' },
-  { label: 'Place Order', path: 'place-order', icon: '🛒' },
-  { label: 'Track Order', path: 'track', icon: '🚚' },
-  { label: 'History', path: 'history', icon: '📜' },
-  { label: 'Updates', path: 'updates', icon: '🔔' },
+  { label: 'Dashboard', path: 'dashboard' },
+  { label: 'Browse', path: 'browse' },
+  { label: 'Place Order', path: 'place-order' },
+  { label: 'Track Order', path: 'track' },
+  { label: 'History', path: 'history' },
+  { label: 'Updates', path: 'updates' },
 ]
 
 export const CUSTOMER_COLOR = '#ca8a04'

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ROLE_CONFIG } from '../config/roles'
+import { ROLE_CONFIG, getRoleInitials } from '../config/roles'
 import type { User, UserRole } from '../types'
 import { getRoleAccountSummaries } from '../utils/notifications'
 
@@ -31,7 +31,7 @@ export function QuickRoleAccess({
           </Link>
         </p>
         <div className="grid gap-3 sm:grid-cols-2">
-          {roleAccounts.map(({ role, title, icon, color, account }) => (
+          {roleAccounts.map(({ role, title, color, account }) => (
             <button
               key={role}
               type="button"
@@ -40,10 +40,10 @@ export function QuickRoleAccess({
               className="btn-base group flex min-h-[4.5rem] w-full items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/90 p-4 text-left shadow-sm shadow-slate-200/40 transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-100/60 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-500/25 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <div
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg transition group-hover:scale-105"
-                style={{ backgroundColor: `${color}18`, boxShadow: `inset 0 0 0 1px ${color}25` }}
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-xs font-extrabold transition group-hover:scale-105"
+                style={{ backgroundColor: `${color}18`, color, boxShadow: `inset 0 0 0 1px ${color}25` }}
               >
-                {icon}
+                {getRoleInitials(title)}
               </div>
               <div className="min-w-0">
                 <p className="text-sm font-bold text-slate-900">{title}</p>
@@ -85,7 +85,7 @@ export function QuickRoleAccess({
                   : undefined
               }
             >
-              {config.icon} {config.title}
+              {config.shortLabel}
             </button>
           )
         })}

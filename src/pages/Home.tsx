@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { PublicFooter, PublicHeader } from '../components/PublicShell'
-import { DeveloperCredit, CloudSystemBadge } from '../components/DeveloperCredit'
+import { DeveloperCredit, PlatformBadge } from '../components/DeveloperCredit'
 import { ActionButton, Card } from '../components/ui'
 import {
   APP_DESCRIPTION,
@@ -12,7 +12,7 @@ import {
   HOME_HIGHLIGHTS,
   SYSTEM_FLOW,
 } from '../config/app'
-import { ROLE_CONFIG } from '../config/roles'
+import { ROLE_CONFIG, getRoleInitials } from '../config/roles'
 import { getRolePath, useApp } from '../context/AppContext'
 
 export function Home() {
@@ -39,7 +39,7 @@ export function Home() {
         <div className="relative mx-auto max-w-7xl px-3 py-16 sm:px-6 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <CloudSystemBadge size="lg" />
+              <PlatformBadge size="lg" />
             </div>
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {APP_NAME}
@@ -48,18 +48,17 @@ export function Home() {
               {APP_TAGLINE}
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
-              {APP_DESCRIPTION} From customer orders to inventory forecasting — every step connected in one
-              unified platform.
+              {APP_DESCRIPTION}
             </p>
             <div className="mt-8 flex w-full max-w-md flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:justify-center">
               <ActionButton variant="primary" size="lg" fullWidth className="sm:min-w-[200px] sm:w-auto" onClick={() => navigate('/register')}>
                 Create Free Account
               </ActionButton>
               <ActionButton
-                variant="outline"
+                variant="outlineOnDark"
                 size="lg"
                 fullWidth
-                className="border-white/40 bg-white/10 text-white hover:border-white/60 hover:bg-white/20 sm:min-w-[160px] sm:w-auto"
+                className="sm:min-w-[160px] sm:w-auto"
                 onClick={() => navigate('/login')}
               >
                 Sign In
@@ -165,10 +164,10 @@ export function Home() {
             {ROLE_CONFIG.map((role) => (
               <Card key={role.role} hover padding="compact" className="flex h-full flex-col">
                 <div
-                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl text-xl"
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl text-sm font-extrabold"
                   style={{ backgroundColor: `${role.color}15`, color: role.color }}
                 >
-                  {role.icon}
+                  {getRoleInitials(role.title)}
                 </div>
                 <h3 className="font-bold text-slate-900">{role.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{role.description}</p>
@@ -212,7 +211,7 @@ export function Home() {
         </div>
       </section>
 
-      <section id="cloud" className="border-b border-slate-200/80 bg-slate-50 safe-px">
+      <section id="developer" className="border-b border-slate-200/80 bg-slate-50 safe-px">
         <div className="mx-auto max-w-7xl px-3 py-14 sm:px-6 sm:py-20">
           <DeveloperCredit variant="showcase" />
         </div>
@@ -228,15 +227,17 @@ export function Home() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <ActionButton
-                variant="secondary"
-                className="min-w-[160px] border-0 bg-white text-emerald-700 hover:bg-emerald-50"
+                variant="light"
+                size="lg"
+                className="min-w-[160px]"
                 onClick={() => navigate('/register')}
               >
                 Get Started
               </ActionButton>
               <ActionButton
-                variant="secondary"
-                className="min-w-[140px] border border-white/30 bg-transparent text-white hover:bg-white/10"
+                variant="outlineOnDark"
+                size="lg"
+                className="min-w-[140px]"
                 onClick={() => navigate('/login')}
               >
                 Sign In

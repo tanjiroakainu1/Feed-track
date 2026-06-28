@@ -1,10 +1,10 @@
 import { useEffect, useState, type ReactNode } from 'react'
 import { ROLE_CONFIG } from '../config/roles'
-import { CLOUD_SYSTEM } from '../config/app'
+import { PLATFORM } from '../config/app'
 import type { NavItem } from '../types/nav'
 import type { User, UserRole } from '../types'
 import { getRoleAccountSummaries } from '../utils/notifications'
-import { CloudSystemBadge, DeveloperCredit } from './DeveloperCredit'
+import { DeveloperCredit, PlatformBadge } from './DeveloperCredit'
 import { ActionButton, IconButton } from './ui'
 
 interface RoleShellProps {
@@ -125,9 +125,9 @@ export function RoleShell({
                 key={item.path}
                 type="button"
                 onClick={() => handleNav(item.path)}
-                className={`flex w-full min-h-[2.75rem] items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200 ${
+                className={`relative flex w-full min-h-[2.75rem] items-center rounded-xl px-3 py-2.5 text-sm font-semibold transition-all duration-200 ${
                   active
-                    ? 'text-white shadow-md'
+                    ? 'pl-4 text-white shadow-md'
                     : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
                 }`}
                 style={
@@ -136,7 +136,9 @@ export function RoleShell({
                     : undefined
                 }
               >
-                <span className="text-base">{item.icon}</span>
+                {active && (
+                  <span className="absolute left-1.5 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-white/90" />
+                )}
                 <span>{item.label}</span>
               </button>
             )
@@ -169,7 +171,7 @@ export function RoleShell({
                     }`}
                     style={active ? { backgroundColor: config.color } : undefined}
                   >
-                    {config.icon} {config.title.split(' ')[0]}
+                    {config.shortLabel}
                   </button>
                 )
               })}
@@ -267,7 +269,7 @@ export function RoleShell({
                     }`}
                     style={active ? { backgroundColor: accentColor } : undefined}
                   >
-                    {item.icon} {item.label}
+                    {item.label}
                   </button>
                 )
               })}
@@ -278,9 +280,9 @@ export function RoleShell({
         <main className="flex flex-1 flex-col">
           <div className="flex-1">{children}</div>
           <div className="role-footer-bar flex border-t border-slate-200/60 safe-px safe-pb flex-col items-center gap-1 py-2 sm:flex-row sm:justify-between lg:px-6">
-            <CloudSystemBadge size="sm" />
+            <PlatformBadge size="sm" />
             <DeveloperCredit variant="minimal" />
-            <p className="hidden text-[10px] font-medium text-slate-400 sm:block">{CLOUD_SYSTEM.name}</p>
+            <p className="hidden text-[10px] font-medium text-slate-400 sm:block">{PLATFORM.name}</p>
           </div>
         </main>
       </div>

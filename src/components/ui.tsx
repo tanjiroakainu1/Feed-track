@@ -45,7 +45,7 @@ export function ActionButton({
 }: {
   children: React.ReactNode
   onClick?: () => void
-  variant?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'ghost' | 'outline'
+  variant?: 'primary' | 'secondary' | 'light' | 'outlineOnDark' | 'danger' | 'success' | 'warning' | 'ghost' | 'ghostOnDark' | 'outline'
   disabled?: boolean
   size?: 'xs' | 'sm' | 'md' | 'lg'
   type?: 'button' | 'submit' | 'reset'
@@ -55,21 +55,55 @@ export function ActionButton({
   const base =
     'btn-base relative inline-flex items-center justify-center gap-2 overflow-hidden font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:active:scale-100 disabled:before:hidden'
 
-  const variants = {
-    primary:
-      'bg-gradient-to-r from-emerald-600 via-emerald-500 to-yellow-500 bg-[length:200%_100%] text-white shadow-lg shadow-emerald-500/30 hover:bg-[position:100%_0] hover:shadow-xl hover:shadow-emerald-500/35 active:scale-[0.97] focus-visible:ring-emerald-500/40 btn-shine',
-    secondary:
-      'border border-slate-200/90 bg-white text-slate-700 shadow-sm shadow-slate-200/50 hover:border-emerald-200 hover:bg-emerald-50/50 hover:text-emerald-700 active:scale-[0.97] focus-visible:ring-emerald-500/25',
-    outline:
-      'border-2 border-emerald-200 bg-transparent text-emerald-700 hover:border-emerald-400 hover:bg-emerald-50 active:scale-[0.97] focus-visible:ring-emerald-500/30',
-    ghost:
-      'bg-transparent text-slate-600 hover:bg-slate-100 hover:text-slate-900 active:scale-[0.97] focus-visible:ring-slate-400/30',
-    danger:
-      'bg-gradient-to-r from-rose-600 to-red-600 text-white shadow-lg shadow-rose-500/30 hover:from-rose-500 hover:to-red-500 hover:shadow-xl hover:shadow-rose-500/35 active:scale-[0.97] focus-visible:ring-rose-500/40 btn-shine',
-    success:
-      'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-lg shadow-emerald-500/30 hover:from-emerald-500 hover:to-teal-500 hover:shadow-xl hover:shadow-emerald-500/35 active:scale-[0.97] focus-visible:ring-emerald-500/40 btn-shine',
-    warning:
-      'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/30 hover:from-amber-400 hover:to-orange-400 hover:shadow-xl hover:shadow-amber-500/35 active:scale-[0.97] focus-visible:ring-amber-500/40 btn-shine',
+  const variants: Record<string, { button: string; label: string }> = {
+    primary: {
+      button:
+        'bg-gradient-to-r from-emerald-600 via-emerald-500 to-yellow-500 bg-[length:200%_100%] shadow-lg shadow-emerald-500/30 hover:bg-[position:100%_0] hover:shadow-xl hover:shadow-emerald-500/35 active:scale-[0.97] focus-visible:ring-emerald-500/40 btn-shine',
+      label: 'text-white',
+    },
+    secondary: {
+      button:
+        'border border-slate-200/90 bg-white shadow-sm shadow-slate-200/50 hover:border-emerald-200 hover:bg-emerald-50/50 active:scale-[0.97] focus-visible:ring-emerald-500/25',
+      label: 'text-slate-700 group-hover:text-emerald-700',
+    },
+    light: {
+      button:
+        'border-0 bg-white shadow-lg shadow-emerald-900/20 hover:bg-emerald-50 active:scale-[0.97] focus-visible:ring-white/40',
+      label: 'text-emerald-800',
+    },
+    outlineOnDark: {
+      button:
+        'border-2 border-white/40 bg-white/10 hover:border-white/60 hover:bg-white/20 active:scale-[0.97] focus-visible:ring-white/30',
+      label: 'text-white',
+    },
+    outline: {
+      button:
+        'border-2 border-emerald-200 bg-transparent hover:border-emerald-400 hover:bg-emerald-50 active:scale-[0.97] focus-visible:ring-emerald-500/30',
+      label: 'text-emerald-700',
+    },
+    ghost: {
+      button: 'bg-transparent hover:bg-slate-100 active:scale-[0.97] focus-visible:ring-slate-400/30',
+      label: 'text-slate-600 hover:text-slate-900',
+    },
+    ghostOnDark: {
+      button: 'bg-transparent hover:bg-white/10 active:scale-[0.97] focus-visible:ring-white/25',
+      label: 'text-white',
+    },
+    danger: {
+      button:
+        'bg-gradient-to-r from-rose-600 to-red-600 shadow-lg shadow-rose-500/30 hover:from-rose-500 hover:to-red-500 hover:shadow-xl hover:shadow-rose-500/35 active:scale-[0.97] focus-visible:ring-rose-500/40 btn-shine',
+      label: 'text-white',
+    },
+    success: {
+      button:
+        'bg-gradient-to-r from-emerald-600 to-teal-600 shadow-lg shadow-emerald-500/30 hover:from-emerald-500 hover:to-teal-500 hover:shadow-xl hover:shadow-emerald-500/35 active:scale-[0.97] focus-visible:ring-emerald-500/40 btn-shine',
+      label: 'text-white',
+    },
+    warning: {
+      button:
+        'bg-gradient-to-r from-amber-500 to-orange-500 shadow-lg shadow-amber-500/30 hover:from-amber-400 hover:to-orange-400 hover:shadow-xl hover:shadow-amber-500/35 active:scale-[0.97] focus-visible:ring-amber-500/40 btn-shine',
+      label: 'text-white',
+    },
   }
 
   const sizes = {
@@ -79,14 +113,16 @@ export function ActionButton({
     lg: 'min-h-[3.125rem] px-6 py-3 text-sm rounded-2xl sm:min-h-[3.25rem] sm:px-8 sm:text-base',
   }
 
+  const style = variants[variant] ?? variants.primary
+
   return (
     <button
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${base} ${variants[variant]} ${sizes[size]} ${fullWidth ? 'w-full' : ''} ${className}`}
+      className={`group ${base} ${style.button} ${sizes[size]} ${fullWidth ? 'w-full' : ''} ${className}`}
     >
-      <span className="relative z-[1] inline-flex items-center justify-center gap-2">{children}</span>
+      <span className={`relative z-[1] inline-flex items-center justify-center gap-2 ${style.label}`}>{children}</span>
     </button>
   )
 }

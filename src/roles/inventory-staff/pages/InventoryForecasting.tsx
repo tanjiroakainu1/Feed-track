@@ -28,7 +28,7 @@ export function InventoryForecasting() {
   return (
     <PageContainer
       title="Inventory Forecasting"
-      description={`Cloud-based demand forecasting using weighted consumption, pipeline orders, safety stock, and reorder point (ROP) analysis over a ${FORECAST_WINDOW_DAYS}-day window.`}
+      description={`Demand forecasting using weighted consumption, pipeline orders, safety stock, and reorder point (ROP) analysis over a ${FORECAST_WINDOW_DAYS}-day window.`}
     >
       <StatGrid>
         <StatCard label="Critical Items" value={critical} icon="🚨" variant={critical > 0 ? 'warning' : 'success'} />

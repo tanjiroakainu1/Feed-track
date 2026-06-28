@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { APP_ICON, APP_NAME, CLOUD_SYSTEM } from '../config/app'
-import { CloudSystemBadge, DeveloperCredit } from './DeveloperCredit'
+import { APP_ICON, APP_NAME, DEVELOPER, PLATFORM } from '../config/app'
+import { PlatformBadge, DeveloperCredit } from './DeveloperCredit'
 import { ActionButton, IconButton } from './ui'
 
 interface PublicHeaderProps {
@@ -11,7 +11,7 @@ interface PublicHeaderProps {
 const NAV_LINKS = [
   { href: '#how-it-works', label: 'How it works' },
   { href: '#roles', label: 'Roles' },
-  { href: '#cloud', label: 'Cloud' },
+  { href: '#developer', label: 'Developer' },
   { href: '#features', label: 'Features' },
 ] as const
 
@@ -68,10 +68,10 @@ export function PublicHeader({ transparent = false }: PublicHeaderProps) {
 
           <div className="flex shrink-0 items-center gap-2">
             <ActionButton
-              variant={transparent ? 'ghost' : 'secondary'}
+              variant={transparent ? 'ghostOnDark' : 'secondary'}
               size="sm"
               onClick={() => navigate('/login')}
-              className={`hidden sm:inline-flex ${transparent ? 'text-white hover:bg-white/10' : ''}`}
+              className="hidden sm:inline-flex"
             >
               Sign In
             </ActionButton>
@@ -119,7 +119,7 @@ export function PublicHeader({ transparent = false }: PublicHeaderProps) {
               </ActionButton>
             </div>
             <div className="mt-4 flex justify-center">
-              <CloudSystemBadge size="sm" />
+              <PlatformBadge size="sm" />
             </div>
           </div>
         </>
@@ -140,9 +140,9 @@ export function PublicFooter() {
               </span>
               <span className="text-lg font-extrabold text-slate-900">{APP_NAME}</span>
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-slate-600">{CLOUD_SYSTEM.description}</p>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">{PLATFORM.description}</p>
             <div className="mt-4">
-              <CloudSystemBadge size="md" />
+              <PlatformBadge size="md" />
             </div>
           </div>
 
@@ -152,7 +152,7 @@ export function PublicFooter() {
               <ul className="mt-3 space-y-2 text-sm font-medium text-slate-600">
                 <li><a href="#how-it-works" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">How it works</a></li>
                 <li><a href="#roles" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Roles</a></li>
-                <li><a href="#cloud" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Cloud system</a></li>
+                <li><a href="#developer" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Developer</a></li>
                 <li><a href="#features" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Features</a></li>
               </ul>
             </div>
@@ -164,9 +164,9 @@ export function PublicFooter() {
               </ul>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Cloud system</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Platform</p>
               <ul className="mt-3 space-y-2 text-sm font-medium text-slate-600">
-                {CLOUD_SYSTEM.pillars.map((p) => (
+                {PLATFORM.pillars.map((p) => (
                   <li key={p.label}>{p.icon} {p.label}</li>
                 ))}
               </ul>
@@ -177,7 +177,7 @@ export function PublicFooter() {
         <div className="mt-10 border-t border-slate-100 pt-8">
           <DeveloperCredit variant="footer" />
           <p className="mt-6 text-center text-xs text-slate-400 sm:text-left">
-            © {new Date().getFullYear()} {APP_NAME} · Cloud-based feeds supply management · Philippines (₱)
+            © {new Date().getFullYear()} {APP_NAME} · Feed supply management · Philippines (₱) · Dev by {DEVELOPER.name}
           </p>
         </div>
       </div>
