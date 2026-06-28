@@ -47,7 +47,7 @@ export function ReviewOrders() {
             ))}
           </div>
 
-          <Card className="lg:sticky lg:top-20">
+          <Card className="sticky-panel">
             {selected ? (
               <>
                 <CardHeader title={`Order #${selected.id}`} subtitle={formatDate(selected.createdAt)} />

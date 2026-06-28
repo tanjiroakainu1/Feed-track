@@ -10,4 +10,4 @@ export const ADMIN_NAV: NavItem[] = [
   { label: 'Reports', path: 'reports' },
 ]
 
-export const ADMIN_COLOR = '#059669'
+export const ADMIN_COLOR = '#57534e'

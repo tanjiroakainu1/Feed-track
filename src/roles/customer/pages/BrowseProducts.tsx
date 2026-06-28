@@ -55,7 +55,7 @@ export function BrowseProducts() {
                 <span
                   className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-bold ring-1 ring-inset sm:text-xs ${
                     p.stock > 0
-                      ? 'bg-emerald-50 text-emerald-700 ring-emerald-200/60'
+                      ? 'bg-stone-50 text-stone-700 ring-stone-200/60'
                       : 'bg-rose-50 text-rose-700 ring-rose-200/60'
                   }`}
                 >

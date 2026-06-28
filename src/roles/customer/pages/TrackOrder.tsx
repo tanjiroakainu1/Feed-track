@@ -58,12 +58,12 @@ export function TrackOrder() {
                   variant="error"
                 />
               ) : (
-                <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div className="flex gap-3 overflow-x-auto pb-1 scrollbar-hide sm:grid sm:grid-cols-4 sm:gap-4 sm:overflow-visible sm:pb-0">
                   {statusSteps.map((step, i) => (
-                    <div key={step} className="flex flex-col items-center text-center">
+                    <div key={step} className="flex min-w-[4.5rem] shrink-0 flex-col items-center text-center sm:min-w-0">
                       <div
-                        className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold sm:h-12 sm:w-12 ${
-                          i <= currentStep ? 'bg-emerald-600 text-white shadow-md shadow-emerald-500/30' : 'bg-slate-200 text-slate-500'
+                        className={`flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold sm:h-12 sm:w-12 ${
+                          i <= currentStep ? 'bg-stone-600 text-white shadow-md shadow-stone-500/30' : 'bg-slate-200 text-slate-500'
                         }`}
                       >
                         {i + 1}

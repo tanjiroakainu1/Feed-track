@@ -55,13 +55,13 @@ export function InventoryCoordination() {
               {stockChecks.map((check, i) => (
                 <ListRow
                   key={i}
-                  className={check.sufficient ? 'border-emerald-200 bg-emerald-50/80' : 'border-red-200 bg-red-50/80'}
+                  className={check.sufficient ? 'border-stone-200 bg-stone-50/80' : 'border-red-200 bg-red-50/80'}
                 >
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="text-sm font-bold">Order #{check.orderId}</span>
                       <span
-                        className={`text-xs font-bold ${check.sufficient ? 'text-emerald-700' : 'text-red-700'}`}
+                        className={`text-xs font-bold ${check.sufficient ? 'text-stone-700' : 'text-red-700'}`}
                       >
                         {check.sufficient ? 'Stock OK' : 'Insufficient'}
                       </span>

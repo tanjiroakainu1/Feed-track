@@ -57,7 +57,7 @@ export function Register() {
         <div className="mt-6 space-y-3 text-center text-sm text-slate-600">
           <p>
             Already registered?{' '}
-            <Link to="/login" className="font-bold text-emerald-600 hover:text-emerald-700">
+            <Link to="/login" className="font-bold text-stone-600 hover:text-stone-700">
               Sign in
             </Link>
           </p>

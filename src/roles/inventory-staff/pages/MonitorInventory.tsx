@@ -28,7 +28,7 @@ export function MonitorInventory() {
           onChange={(e) => setSearch(e.target.value)}
           className="w-full sm:min-w-[220px] sm:flex-1"
         />
-        <div className="grid w-full grid-cols-3 gap-2 sm:flex sm:w-auto sm:flex-wrap">
+        <div className="flex w-full flex-col gap-2 xs:grid xs:grid-cols-3 sm:flex sm:w-auto sm:flex-wrap">
           {(['all', 'low', 'healthy'] as const).map((f) => (
             <FilterChip key={f} active={filter === f} onClick={() => setFilter(f)}>
               {f === 'all' ? 'All Items' : f === 'low' ? 'Low Stock' : 'Healthy'}
@@ -50,7 +50,7 @@ export function MonitorInventory() {
                 </div>
                 <span
                   className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-bold ${
-                    isLow ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
+                    isLow ? 'bg-amber-100 text-amber-800' : 'bg-stone-100 text-stone-800'
                   }`}
                 >
                   {isLow ? 'Low' : 'OK'}
@@ -65,7 +65,7 @@ export function MonitorInventory() {
                 </div>
                 <div className="mt-2 h-2 rounded-full bg-slate-100">
                   <div
-                    className={`h-2 rounded-full transition-all ${isLow ? 'bg-amber-500' : 'bg-emerald-500'}`}
+                    className={`h-2 rounded-full transition-all ${isLow ? 'bg-amber-500' : 'bg-stone-500'}`}
                     style={{ width: `${pct}%` }}
                   />
                 </div>

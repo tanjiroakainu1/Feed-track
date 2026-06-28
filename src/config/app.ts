@@ -62,7 +62,7 @@ export const SYSTEM_FLOW = [
     description:
       'Customers explore the feed catalog, check stock availability, build a cart, and submit orders online.',
     icon: '🛒',
-    accent: '#ca8a04',
+    accent: '#a8a29e',
     role: 'Customer',
   },
   {
@@ -71,7 +71,7 @@ export const SYSTEM_FLOW = [
     description:
       'Sales staff inspect order details, approve or reject requests, and coordinate with inventory on availability.',
     icon: '✅',
-    accent: '#d97706',
+    accent: '#78716c',
     role: 'Sales / Order Staff',
   },
   {
@@ -80,7 +80,7 @@ export const SYSTEM_FLOW = [
     description:
       'Inventory staff process approved orders, record incoming/outgoing movements, and restock low items.',
     icon: '📦',
-    accent: '#059669',
+    accent: '#57534e',
     role: 'Inventory Staff',
   },
   {
@@ -89,7 +89,7 @@ export const SYSTEM_FLOW = [
     description:
       'The system forecasts demand, calculates reorder points, flags risks, and notifies the right roles.',
     icon: '🔮',
-    accent: '#eab308',
+    accent: '#92877a',
     role: 'All roles',
   },
   {
@@ -98,7 +98,7 @@ export const SYSTEM_FLOW = [
     description:
       'Administrators manage products, users, orders, analytics, and export sales or forecast reports in ₱.',
     icon: '⚙️',
-    accent: '#059669',
+    accent: '#44403c',
     role: 'Administrator',
   },
 ] as const

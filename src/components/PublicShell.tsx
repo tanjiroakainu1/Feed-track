@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { APP_ICON, APP_NAME, DEVELOPER, PLATFORM } from '../config/app'
-import { PlatformBadge, DeveloperCredit } from './DeveloperCredit'
+import { PLATFORM } from '../config/app'
+import { HeaderBrand } from './HeaderBrand'
+import { PlatformBadge } from './DeveloperCredit'
 import { ActionButton, IconButton } from './ui'
 
 interface PublicHeaderProps {
@@ -27,46 +28,23 @@ export function PublicHeader({ transparent = false }: PublicHeaderProps) {
     }
   }, [menuOpen])
 
-  const linkClass = transparent
-    ? 'text-white/85 hover:text-white'
-    : 'text-slate-600 hover:text-slate-900'
+  const navLinkClass = transparent ? 'header-nav-link header-nav-link-dark' : 'header-nav-link header-nav-link-light'
 
   return (
     <>
-      <header
-        className={`sticky top-0 z-50 border-b safe-px ${
-          transparent
-            ? 'border-white/10 bg-slate-900/80 backdrop-blur-xl'
-            : 'glass-header border-slate-200/80 shadow-sm shadow-slate-200/40'
-        }`}
-      >
-        <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 sm:h-16">
-          <Link to="/" className="group flex min-w-0 items-center gap-2 sm:gap-3" onClick={() => setMenuOpen(false)}>
-            <span
-              className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-lg sm:h-10 sm:w-10 ${
-                transparent ? 'bg-white/10 ring-1 ring-white/20' : 'bg-emerald-50 ring-1 ring-emerald-100'
-              }`}
-            >
-              {APP_ICON}
-            </span>
-            <span
-              className={`truncate text-sm font-extrabold tracking-tight sm:text-base ${
-                transparent ? 'text-white' : 'text-slate-900'
-              }`}
-            >
-              {APP_NAME}
-            </span>
-          </Link>
+      <header className={`app-header safe-px safe-pt ${transparent ? 'app-header-dark' : ''}`}>
+        <div className="app-header-inner mx-auto grid w-full max-w-7xl grid-cols-[1fr_auto_1fr] items-center gap-3 px-3 sm:px-6 lg:px-8">
+          <HeaderBrand tone={transparent ? 'dark' : 'light'} />
 
-          <nav className="hidden items-center gap-5 lg:flex lg:gap-6">
+          <nav className="hidden items-center justify-center gap-1 md:flex">
             {NAV_LINKS.map((link) => (
-              <a key={link.href} href={link.href} className={`text-sm font-semibold transition ${linkClass}`}>
+              <a key={link.href} href={link.href} className={navLinkClass}>
                 {link.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center justify-end gap-2 sm:gap-2.5">
             <ActionButton
               variant={transparent ? 'ghostOnDark' : 'secondary'}
               size="sm"
@@ -81,7 +59,9 @@ export function PublicHeader({ transparent = false }: PublicHeaderProps) {
             <IconButton
               label={menuOpen ? 'Close menu' : 'Open menu'}
               onClick={() => setMenuOpen((open) => !open)}
-              className={`md:hidden ${transparent ? 'border-white/20 bg-white/10 text-white hover:bg-white/20' : ''}`}
+              className={`md:hidden ${
+                transparent ? 'border-white/15 bg-white/10 text-white hover:border-white/25 hover:bg-white/15' : 'border-stone-200/90 bg-white/90'
+              }`}
             >
               {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
@@ -94,23 +74,23 @@ export function PublicHeader({ transparent = false }: PublicHeaderProps) {
           <button
             type="button"
             aria-label="Close menu overlay"
-            className="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-stone-950/50 backdrop-blur-sm md:hidden"
             onClick={() => setMenuOpen(false)}
           />
-          <div className="fixed inset-x-0 top-14 z-50 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b border-slate-200 bg-white p-4 shadow-xl safe-px safe-pb md:hidden">
+          <div className="header-mobile-sheet fixed inset-x-0 top-[calc(3.75rem+env(safe-area-inset-top))] z-50 max-h-[calc(100dvh-3.75rem-env(safe-area-inset-top))] overflow-y-auto p-4 safe-px safe-pb sm:top-[calc(4.25rem+env(safe-area-inset-top))] sm:max-h-[calc(100dvh-4.25rem-env(safe-area-inset-top))] md:hidden">
             <nav className="space-y-1">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="flex min-h-[3rem] items-center rounded-xl px-4 text-base font-semibold text-slate-700 transition hover:bg-emerald-50 hover:text-emerald-700"
+                  className="header-nav-link header-nav-link-light flex min-h-[3rem] w-full px-4 text-base"
                 >
                   {link.label}
                 </a>
               ))}
             </nav>
-            <div className="mt-4 grid gap-2 border-t border-slate-100 pt-4">
+            <div className="mt-4 grid gap-2 border-t border-stone-200/80 pt-4">
               <ActionButton variant="secondary" fullWidth onClick={() => { setMenuOpen(false); navigate('/login') }}>
                 Sign In
               </ActionButton>
@@ -130,17 +110,12 @@ export function PublicHeader({ transparent = false }: PublicHeaderProps) {
 
 export function PublicFooter() {
   return (
-    <footer className="border-t border-slate-200/80 bg-white safe-px safe-pb">
+    <footer className="border-t border-stone-200/80 bg-white/90 safe-px safe-pb backdrop-blur-sm">
       <div className="mx-auto max-w-7xl px-3 py-10 sm:px-6 sm:py-12">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-sm">
-            <Link to="/" className="inline-flex items-center gap-2">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-lg ring-1 ring-emerald-100">
-                {APP_ICON}
-              </span>
-              <span className="text-lg font-extrabold text-slate-900">{APP_NAME}</span>
-            </Link>
-            <p className="mt-3 text-sm leading-relaxed text-slate-600">{PLATFORM.description}</p>
+            <HeaderBrand subtitle="" />
+            <p className="mt-3 text-sm leading-relaxed text-stone-600">{PLATFORM.description}</p>
             <div className="mt-4">
               <PlatformBadge size="md" />
             </div>
@@ -148,37 +123,30 @@ export function PublicFooter() {
 
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 sm:gap-8">
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Explore</p>
-              <ul className="mt-3 space-y-2 text-sm font-medium text-slate-600">
-                <li><a href="#how-it-works" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">How it works</a></li>
-                <li><a href="#roles" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Roles</a></li>
-                <li><a href="#developer" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Developer</a></li>
-                <li><a href="#features" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Features</a></li>
+              <p className="text-xs font-bold uppercase tracking-wider text-stone-400">Explore</p>
+              <ul className="mt-3 space-y-2 text-sm font-medium text-stone-600">
+                <li><a href="#how-it-works" className="inline-flex min-h-[2.75rem] items-center hover:text-stone-800">How it works</a></li>
+                <li><a href="#roles" className="inline-flex min-h-[2.75rem] items-center hover:text-stone-800">Roles</a></li>
+                <li><a href="#developer" className="inline-flex min-h-[2.75rem] items-center hover:text-stone-800">Developer</a></li>
+                <li><a href="#features" className="inline-flex min-h-[2.75rem] items-center hover:text-stone-800">Features</a></li>
               </ul>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Account</p>
-              <ul className="mt-3 space-y-2 text-sm font-medium text-slate-600">
-                <li><Link to="/login" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Sign in</Link></li>
-                <li><Link to="/register" className="inline-flex min-h-[2rem] items-center hover:text-emerald-600">Register</Link></li>
+              <p className="text-xs font-bold uppercase tracking-wider text-stone-400">Account</p>
+              <ul className="mt-3 space-y-2 text-sm font-medium text-stone-600">
+                <li><Link to="/login" className="inline-flex min-h-[2.75rem] items-center hover:text-stone-800">Sign in</Link></li>
+                <li><Link to="/register" className="inline-flex min-h-[2.75rem] items-center hover:text-stone-800">Register</Link></li>
               </ul>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Platform</p>
-              <ul className="mt-3 space-y-2 text-sm font-medium text-slate-600">
+              <p className="text-xs font-bold uppercase tracking-wider text-stone-400">Platform</p>
+              <ul className="mt-3 space-y-2 text-sm font-medium text-stone-600">
                 {PLATFORM.pillars.map((p) => (
                   <li key={p.label}>{p.icon} {p.label}</li>
                 ))}
               </ul>
             </div>
           </div>
-        </div>
-
-        <div className="mt-10 border-t border-slate-100 pt-8">
-          <DeveloperCredit variant="footer" />
-          <p className="mt-6 text-center text-xs text-slate-400 sm:text-left">
-            © {new Date().getFullYear()} {APP_NAME} · Feed supply management · Philippines (₱) · Dev by {DEVELOPER.name}
-          </p>
         </div>
       </div>
     </footer>

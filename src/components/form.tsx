@@ -1,7 +1,7 @@
 import type { InputHTMLAttributes, SelectHTMLAttributes } from 'react'
 
 const fieldClass =
-  'w-full min-h-[2.75rem] rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-base sm:text-sm text-slate-900 shadow-sm transition placeholder:text-slate-400 hover:border-slate-300 focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10'
+  'w-full min-h-[2.75rem] rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-base sm:text-sm text-slate-900 shadow-sm transition placeholder:text-slate-400 hover:border-slate-300 focus:border-stone-500 focus:outline-none focus:ring-4 focus:ring-stone-500/10'
 
 export function Label({ children, htmlFor }: { children: React.ReactNode; htmlFor?: string }) {
   return (

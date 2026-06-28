@@ -34,6 +34,7 @@ export function PlaceOrder() {
   })
 
   const total = cartItems.reduce((sum, { product, quantity }) => sum + product.price * quantity, 0)
+  const itemCount = cartItems.reduce((sum, { quantity }) => sum + quantity, 0)
 
   const handlePlaceOrder = () => {
     if (cartItems.length === 0) {
@@ -53,11 +54,9 @@ export function PlaceOrder() {
 
   return (
     <PageContainer title="Place Online Order" description="Select products and submit your order">
-      {message && (
-        <AlertBanner message={message} variant={isSuccess ? 'success' : 'info'} />
-      )}
+      {message && <AlertBanner message={message} variant={isSuccess ? 'success' : 'info'} />}
 
-      <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
+      <div className={`grid gap-6 lg:grid-cols-3 lg:items-start ${cartItems.length > 0 ? 'mobile-dock' : ''}`}>
         <div className="space-y-3 lg:col-span-2">
           {available.length === 0 ? (
             <Card>
@@ -66,8 +65,8 @@ export function PlaceOrder() {
           ) : (
             available.map((p) => (
               <Card key={p.id} padding="compact">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="min-w-0">
+                <div className="flex flex-col gap-3 xs:flex-row xs:items-center xs:justify-between">
+                  <div className="min-w-0 flex-1">
                     <h3 className="font-bold text-slate-900">{p.name}</h3>
                     <p className="text-sm text-slate-500">
                       {formatCurrency(p.price)} · {p.stock} in stock
@@ -84,7 +83,7 @@ export function PlaceOrder() {
           )}
         </div>
 
-        <div className="lg:sticky lg:top-20">
+        <div className="sticky-panel hidden lg:block">
           <Card>
             <CardHeader title="Order Summary" />
             {cartItems.length === 0 ? (
@@ -94,7 +93,7 @@ export function PlaceOrder() {
                 <div className="space-y-2">
                   {cartItems.map(({ product, quantity }) => (
                     <div key={product.id} className="flex justify-between gap-2 text-sm">
-                      <span className="min-w-0">
+                      <span className="min-w-0 break-words">
                         {quantity}x {product.name}
                       </span>
                       <span className="shrink-0 font-medium">{formatCurrency(product.price * quantity)}</span>
@@ -117,6 +116,22 @@ export function PlaceOrder() {
           </Card>
         </div>
       </div>
+
+      {cartItems.length > 0 && (
+        <div className="fixed-dock lg:hidden">
+          <div className="mx-auto flex max-w-lg items-center gap-3">
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Cart</p>
+              <p className="truncate text-sm font-bold text-slate-900">
+                {itemCount} item{itemCount === 1 ? '' : 's'} · {formatCurrency(total)}
+              </p>
+            </div>
+            <ActionButton onClick={handlePlaceOrder} variant="primary" className="shrink-0">
+              Place Order
+            </ActionButton>
+          </div>
+        </div>
+      )}
     </PageContainer>
   )
 }

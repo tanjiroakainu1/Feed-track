@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { THEME } from '../config/theme'
 import type { OrderStatus } from '../types'
@@ -9,16 +10,16 @@ export { formatCurrencyValue as formatCurrency, formatCurrencyPlain }
 export function StatusBadge({ status }: { status: OrderStatus | string }) {
   const styles: Record<string, { bg: string; dot: string }> = {
     pending: { bg: 'bg-amber-50 text-amber-800 ring-amber-200/60', dot: 'bg-amber-500' },
-    approved: { bg: 'bg-emerald-50 text-emerald-800 ring-emerald-200/60', dot: 'bg-emerald-500' },
+    approved: { bg: 'bg-stone-50 text-stone-800 ring-stone-200/60', dot: 'bg-stone-500' },
     rejected: { bg: 'bg-rose-50 text-rose-800 ring-rose-200/60', dot: 'bg-rose-500' },
-    processing: { bg: 'bg-yellow-50 text-yellow-800 ring-yellow-200/60', dot: 'bg-yellow-500' },
-    completed: { bg: 'bg-emerald-50 text-emerald-800 ring-emerald-200/60', dot: 'bg-emerald-500' },
+    processing: { bg: 'bg-stone-100 text-stone-800 ring-stone-200/60', dot: 'bg-stone-500' },
+    completed: { bg: 'bg-stone-50 text-stone-800 ring-stone-200/60', dot: 'bg-stone-500' },
     cancelled: { bg: 'bg-slate-100 text-slate-700 ring-slate-200/60', dot: 'bg-slate-400' },
-    active: { bg: 'bg-emerald-50 text-emerald-800 ring-emerald-200/60', dot: 'bg-emerald-500' },
+    active: { bg: 'bg-stone-50 text-stone-800 ring-stone-200/60', dot: 'bg-stone-500' },
     inactive: { bg: 'bg-slate-100 text-slate-600 ring-slate-200/60', dot: 'bg-slate-400' },
     critical: { bg: 'bg-rose-50 text-rose-800 ring-rose-200/60', dot: 'bg-rose-500' },
     warning: { bg: 'bg-amber-50 text-amber-800 ring-amber-200/60', dot: 'bg-amber-500' },
-    good: { bg: 'bg-emerald-50 text-emerald-800 ring-emerald-200/60', dot: 'bg-emerald-500' },
+    good: { bg: 'bg-stone-50 text-stone-800 ring-stone-200/60', dot: 'bg-stone-500' },
   }
 
   const style = styles[status] ?? { bg: 'bg-slate-100 text-slate-700 ring-slate-200/60', dot: 'bg-slate-400' }
@@ -58,18 +59,18 @@ export function ActionButton({
   const variants: Record<string, { button: string; label: string }> = {
     primary: {
       button:
-        'bg-gradient-to-r from-emerald-600 via-emerald-500 to-yellow-500 bg-[length:200%_100%] shadow-lg shadow-emerald-500/30 hover:bg-[position:100%_0] hover:shadow-xl hover:shadow-emerald-500/35 active:scale-[0.97] focus-visible:ring-emerald-500/40 btn-shine',
+        'bg-gradient-to-r from-stone-600 via-stone-500 to-stone-400 bg-[length:200%_100%] shadow-lg shadow-stone-500/30 hover:bg-[position:100%_0] hover:shadow-xl hover:shadow-stone-500/35 active:scale-[0.97] focus-visible:ring-stone-500/40 btn-shine',
       label: 'text-white',
     },
     secondary: {
       button:
-        'border border-slate-200/90 bg-white shadow-sm shadow-slate-200/50 hover:border-emerald-200 hover:bg-emerald-50/50 active:scale-[0.97] focus-visible:ring-emerald-500/25',
-      label: 'text-slate-700 group-hover:text-emerald-700',
+        'border border-slate-200/90 bg-white shadow-sm shadow-slate-200/50 hover:border-stone-200 hover:bg-stone-50/50 active:scale-[0.97] focus-visible:ring-stone-500/25',
+      label: 'text-slate-700 group-hover:text-stone-700',
     },
     light: {
       button:
-        'border-0 bg-white shadow-lg shadow-emerald-900/20 hover:bg-emerald-50 active:scale-[0.97] focus-visible:ring-white/40',
-      label: 'text-emerald-800',
+        'border-0 bg-white shadow-lg shadow-stone-900/20 hover:bg-stone-50 active:scale-[0.97] focus-visible:ring-white/40',
+      label: 'text-stone-800',
     },
     outlineOnDark: {
       button:
@@ -78,8 +79,8 @@ export function ActionButton({
     },
     outline: {
       button:
-        'border-2 border-emerald-200 bg-transparent hover:border-emerald-400 hover:bg-emerald-50 active:scale-[0.97] focus-visible:ring-emerald-500/30',
-      label: 'text-emerald-700',
+        'border-2 border-stone-200 bg-transparent hover:border-stone-400 hover:bg-stone-50 active:scale-[0.97] focus-visible:ring-stone-500/30',
+      label: 'text-stone-700',
     },
     ghost: {
       button: 'bg-transparent hover:bg-slate-100 active:scale-[0.97] focus-visible:ring-slate-400/30',
@@ -96,7 +97,7 @@ export function ActionButton({
     },
     success: {
       button:
-        'bg-gradient-to-r from-emerald-600 to-teal-600 shadow-lg shadow-emerald-500/30 hover:from-emerald-500 hover:to-teal-500 hover:shadow-xl hover:shadow-emerald-500/35 active:scale-[0.97] focus-visible:ring-emerald-500/40 btn-shine',
+        'bg-gradient-to-r from-stone-600 to-stone-700 shadow-lg shadow-stone-500/30 hover:from-stone-500 hover:to-stone-600 hover:shadow-xl hover:shadow-stone-500/35 active:scale-[0.97] focus-visible:ring-stone-500/40 btn-shine',
       label: 'text-white',
     },
     warning: {
@@ -107,8 +108,8 @@ export function ActionButton({
   }
 
   const sizes = {
-    xs: 'min-h-[2rem] px-2.5 py-1 text-[11px] rounded-lg sm:min-h-[2.125rem] sm:px-3 sm:text-xs',
-    sm: 'min-h-[2.5rem] px-3.5 py-2 text-xs rounded-xl sm:min-h-[2.625rem] sm:px-4 sm:text-sm',
+    xs: 'min-h-[2.75rem] px-2.5 py-1 text-[11px] rounded-lg sm:min-h-[2.125rem] sm:px-3 sm:text-xs',
+    sm: 'min-h-[2.75rem] px-3.5 py-2 text-xs rounded-xl sm:min-h-[2.875rem] sm:px-4 sm:text-sm',
     md: 'min-h-[2.875rem] px-5 py-2.5 text-sm rounded-xl sm:min-h-[3rem] sm:px-6',
     lg: 'min-h-[3.125rem] px-6 py-3 text-sm rounded-2xl sm:min-h-[3.25rem] sm:px-8 sm:text-base',
   }
@@ -142,10 +143,10 @@ export function FilterChip({
     <button
       type="button"
       onClick={onClick}
-      className={`btn-base min-h-[2.75rem] flex-1 rounded-xl px-3 py-2 text-xs font-semibold capitalize transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-500/25 sm:min-h-[2.875rem] sm:flex-none sm:px-4 sm:text-sm ${
+      className={`btn-base min-h-[2.75rem] flex-1 rounded-xl px-3 py-2 text-xs font-semibold capitalize transition-all duration-200 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-stone-500/25 sm:min-h-[2.875rem] sm:flex-none sm:px-4 sm:text-sm ${
         active
-          ? 'bg-gradient-to-r from-emerald-600 to-yellow-500 text-white shadow-lg shadow-emerald-500/30'
-          : 'border border-slate-200 bg-white text-slate-600 shadow-sm hover:border-emerald-200 hover:bg-emerald-50/40 hover:text-emerald-700'
+          ? 'bg-gradient-to-r from-stone-600 to-stone-400 text-white shadow-lg shadow-stone-500/30'
+          : 'border border-slate-200 bg-white text-slate-600 shadow-sm hover:border-stone-200 hover:bg-stone-50/40 hover:text-stone-700'
       } ${className}`}
     >
       {children}
@@ -169,7 +170,7 @@ export function IconButton({
       type="button"
       aria-label={label}
       onClick={onClick}
-      className={`btn-base touch-target inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-500/25 ${className}`}
+      className={`btn-base touch-target inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition-all duration-200 hover:border-slate-300 hover:bg-slate-50 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-stone-500/25 ${className}`}
     >
       {children}
     </button>
@@ -179,8 +180,16 @@ export function IconButton({
 export function ButtonGroup({ children, className = '', stackOnMobile = true }: { children: React.ReactNode; className?: string; stackOnMobile?: boolean }) {
   return (
     <div
-      className={`flex gap-2 ${stackOnMobile ? 'flex-col sm:flex-row sm:flex-wrap' : 'flex-wrap'} ${className}`}
+      className={`flex gap-2 ${stackOnMobile ? 'flex-col xs:flex-row xs:flex-wrap' : 'flex-col sm:flex-row flex-wrap'} ${className}`}
     >
+      {children}
+    </div>
+  )
+}
+
+export function TableActions({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`flex min-w-[8rem] flex-col gap-2 sm:min-w-0 sm:flex-row sm:flex-wrap ${className}`}>
       {children}
     </div>
   )
@@ -247,8 +256,8 @@ export function AlertBanner({
 }) {
   const styles = {
     error: 'border-rose-200 bg-rose-50 text-rose-800',
-    success: 'border-emerald-200 bg-emerald-50 text-emerald-800',
-    info: 'border-emerald-200 bg-emerald-50 text-emerald-800',
+    success: 'border-stone-200 bg-stone-50 text-stone-800',
+    info: 'border-stone-200 bg-stone-50 text-stone-800',
   }
 
   return (
@@ -266,16 +275,16 @@ export function SuccessBanner({ message }: { message: string }) {
 export function PageLink({
   to,
   children,
-  accent = 'emerald',
+  accent = 'stone',
 }: {
   to: string
   children: React.ReactNode
-  accent?: 'emerald' | 'amber' | 'yellow'
+  accent?: 'stone' | 'amber' | 'slate'
 }) {
   const colors = {
-    emerald: 'text-emerald-600 hover:text-emerald-700',
+    stone: 'text-stone-600 hover:text-stone-700',
     amber: 'text-amber-600 hover:text-amber-700',
-    yellow: 'text-yellow-600 hover:text-yellow-700',
+    slate: 'text-slate-600 hover:text-slate-700',
   }
 
   return (
@@ -298,8 +307,8 @@ export function ListRow({
     <div
       className={`rounded-xl border border-slate-100 bg-slate-50/50 p-3 transition hover:border-slate-200 hover:bg-white sm:p-4 ${
         stackOnMobile
-          ? 'flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'
-          : 'flex items-center justify-between gap-3'
+          ? 'flex flex-col gap-3 xs:flex-row xs:items-center xs:justify-between'
+          : 'flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between'
       } ${className}`}
     >
       {children}
@@ -335,7 +344,7 @@ export function QuickActionCard({
           </div>
         )}
         <div className="min-w-0">
-          <p className="font-bold text-slate-900 group-hover:text-emerald-700">{label}</p>
+          <p className="font-bold text-slate-900 group-hover:text-stone-700">{label}</p>
           <p className="mt-1 text-xs leading-relaxed text-slate-500">{desc}</p>
         </div>
       </div>
@@ -382,24 +391,53 @@ export function OrderCard({
 }
 
 export function DataTable({ children }: { children: React.ReactNode }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [scrollable, setScrollable] = useState(false)
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const check = () => {
+      setScrollable(el.scrollWidth > el.clientWidth + 2)
+    }
+
+    check()
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(check) : null
+    observer?.observe(el)
+    window.addEventListener('resize', check)
+
+    return () => {
+      observer?.disconnect()
+      window.removeEventListener('resize', check)
+    }
+  }, [children])
+
   return (
-    <div className="-mx-3 overflow-hidden rounded-none border-y border-slate-200/80 bg-white shadow-sm sm:mx-0 sm:rounded-2xl sm:border sm:shadow-slate-200/50">
-      <div className="overflow-x-auto scrollbar-hide">{children}</div>
+    <div
+      className={`data-table-wrap overflow-hidden rounded-none border-y border-slate-200/80 bg-white shadow-sm sm:mx-0 sm:rounded-2xl sm:border sm:shadow-slate-200/50 ${scrollable ? 'is-scrollable' : ''}`}
+    >
+      <div ref={scrollRef} className="data-table-scroll">
+        {children}
+      </div>
+      <p className="data-table-hint">Swipe horizontally to see more columns</p>
     </div>
   )
 }
 
 export function Table({ children }: { children: React.ReactNode }) {
-  return <table className="min-w-[640px] w-full divide-y divide-slate-100 sm:min-w-full">{children}</table>
+  return <table className="w-full min-w-[34rem] table-auto divide-y divide-slate-100 sm:min-w-full">{children}</table>
 }
 
 export function TableHead({ children }: { children: React.ReactNode }) {
   return <thead className="bg-slate-50/80">{children}</thead>
 }
 
-export function TableHeaderCell({ children }: { children: React.ReactNode }) {
+export function TableHeaderCell({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   return (
-    <th className="whitespace-nowrap px-3 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-500 sm:px-5 sm:py-3.5 sm:text-[11px]">
+    <th
+      className={`px-3 py-3 text-left text-[10px] font-bold uppercase tracking-wider text-slate-500 sm:px-5 sm:py-3.5 sm:text-[11px] ${className}`}
+    >
       {children}
     </th>
   )
@@ -413,9 +451,13 @@ export function TableRow({ children }: { children: React.ReactNode }) {
   return <tr className="transition hover:bg-slate-50/80">{children}</tr>
 }
 
-export function TableCell({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+export function TableCell({ children, className = '', nowrap = false }: { children: React.ReactNode; className?: string; nowrap?: boolean }) {
   return (
-    <td className={`whitespace-nowrap px-3 py-3 text-xs text-slate-700 sm:px-5 sm:py-4 sm:text-sm ${className}`}>
+    <td
+      className={`px-3 py-3 text-xs text-slate-700 sm:px-5 sm:py-4 sm:text-sm ${
+        nowrap ? 'whitespace-nowrap' : 'break-words align-top'
+      } ${className}`}
+    >
       {children}
     </td>
   )

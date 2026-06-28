@@ -44,7 +44,7 @@ export function Home() {
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {APP_NAME}
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-emerald-100/90 sm:text-lg lg:text-xl">
+            <p className="mt-5 text-base leading-relaxed text-stone-100/90 sm:text-lg lg:text-xl">
               {APP_TAGLINE}
             </p>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
@@ -66,14 +66,14 @@ export function Home() {
             </div>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-2 xs:gap-3 sm:grid-cols-4 sm:gap-4">
             {HOME_HIGHLIGHTS.map((item) => (
               <div
                 key={item.label}
                 className="rounded-2xl bg-white/5 p-4 text-center ring-1 ring-white/10 backdrop-blur-sm sm:p-5"
               >
                 <p className="text-xl font-extrabold text-white sm:text-2xl">{item.value}</p>
-                <p className="mt-1 text-[11px] font-semibold text-emerald-100/80 sm:text-xs">{item.label}</p>
+                <p className="mt-1 text-[11px] font-semibold text-stone-100/80 sm:text-xs">{item.label}</p>
               </div>
             ))}
           </div>
@@ -83,7 +83,7 @@ export function Home() {
       <section id="how-it-works" className="page-enter border-b border-slate-200/80 bg-white safe-px">
         <div className="mx-auto max-w-7xl px-3 py-14 sm:px-6 sm:py-20">
           <div className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="text-xs font-bold uppercase tracking-wider text-emerald-600 sm:text-sm">System flow</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-stone-600 sm:text-sm">System flow</p>
             <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
               How Feed track works
             </h2>
@@ -94,7 +94,7 @@ export function Home() {
           </div>
 
           <div className="relative">
-            <div className="absolute left-4 top-0 hidden h-full w-0.5 bg-gradient-to-b from-emerald-200 via-emerald-200 to-yellow-200 sm:left-1/2 sm:block sm:-translate-x-1/2" />
+            <div className="absolute left-4 top-0 hidden h-full w-0.5 bg-gradient-to-b from-stone-200 via-stone-200 to-stone-300 sm:left-1/2 sm:block sm:-translate-x-1/2" />
 
             <div className="space-y-6 sm:space-y-10">
               {SYSTEM_FLOW.map((step, index) => (
@@ -128,7 +128,7 @@ export function Home() {
                     </Card>
                   </div>
 
-                  <div className="absolute left-4 hidden h-4 w-4 -translate-x-1/2 rounded-full border-4 border-white bg-emerald-500 shadow-md sm:left-1/2 sm:block" />
+                  <div className="absolute left-4 hidden h-4 w-4 -translate-x-1/2 rounded-full border-4 border-white bg-stone-500 shadow-md sm:left-1/2 sm:block" />
 
                   <div className="hidden flex-1 sm:block" />
                 </div>
@@ -136,7 +136,7 @@ export function Home() {
             </div>
           </div>
 
-          <div className="mx-auto mt-12 max-w-3xl rounded-2xl bg-gradient-to-r from-emerald-50 via-white to-emerald-50 p-5 ring-1 ring-slate-200/80 sm:p-6">
+          <div className="mx-auto mt-12 max-w-3xl rounded-2xl bg-gradient-to-r from-stone-50 via-white to-stone-50 p-5 ring-1 ring-slate-200/80 sm:p-6">
             <p className="text-center text-sm leading-relaxed text-slate-700 sm:text-base">
               <strong className="text-slate-900">End-to-end visibility:</strong> When a customer places an order,
               sales staff get notified. Upon approval, inventory deducts stock automatically. Forecasting runs
@@ -150,7 +150,7 @@ export function Home() {
       <section id="roles" className="app-shell border-b border-slate-200/80 safe-px">
         <div className="mx-auto max-w-7xl px-3 py-14 sm:px-6 sm:py-20">
           <div className="mx-auto mb-10 max-w-2xl text-center">
-            <p className="text-xs font-bold uppercase tracking-wider text-emerald-600 sm:text-sm">Role access</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-stone-600 sm:text-sm">Role access</p>
             <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
               Four dashboards, one platform
             </h2>
@@ -187,7 +187,7 @@ export function Home() {
       <section id="features" className="bg-white safe-px">
         <div className="mx-auto max-w-7xl px-3 py-14 sm:px-6 sm:py-20">
           <div className="mx-auto mb-10 max-w-2xl text-center">
-            <p className="text-xs font-bold uppercase tracking-wider text-emerald-600 sm:text-sm">Capabilities</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-stone-600 sm:text-sm">Capabilities</p>
             <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
               Built for feed supply operations
             </h2>
@@ -197,7 +197,7 @@ export function Home() {
             {APP_FEATURES.map((feature) => (
               <Card key={feature.label} hover padding="compact">
                 <div className="flex gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-2xl">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-stone-50 text-2xl">
                     {feature.icon}
                   </span>
                   <div>
@@ -219,9 +219,9 @@ export function Home() {
 
       <section className="landing-cta safe-px">
         <div className="mx-auto max-w-7xl px-3 py-14 sm:px-6 sm:py-16">
-          <div className="rounded-3xl bg-gradient-to-br from-emerald-600 via-emerald-500 to-emerald-700 p-8 text-center shadow-2xl shadow-emerald-500/30 sm:p-12">
+          <div className="rounded-3xl bg-gradient-to-br from-stone-600 via-stone-500 to-stone-700 p-8 text-center shadow-2xl shadow-stone-500/30 sm:p-12">
             <h2 className="text-2xl font-extrabold text-white sm:text-3xl">Ready to manage your feed store?</h2>
-            <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-emerald-100 sm:text-base">
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-stone-100 sm:text-base">
               Create an account or sign in to access your role dashboard. Inventory, orders, and forecasting —
               all in one place.
             </p>

@@ -10,6 +10,7 @@ import {
   StatusBadge,
   SuccessBanner,
   Table,
+  TableActions,
   TableBody,
   TableCell,
   TableHead,
@@ -47,7 +48,7 @@ export function UserManagement() {
 
       <Card className="mb-6">
         <CardHeader title="Create User Account" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           <FormField label="Full Name">
             <Input placeholder="Full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
           </FormField>
@@ -90,14 +91,14 @@ export function UserManagement() {
                   <TableCell className="capitalize">{u.role.replace(/-/g, ' ')}</TableCell>
                   <TableCell><StatusBadge status={u.active ? 'active' : 'inactive'} /></TableCell>
                   <TableCell>
-                    <div className="flex gap-2">
-                      <ActionButton size="sm" variant="secondary" onClick={() => toggleActive(u)}>
+                    <TableActions>
+                      <ActionButton size="sm" variant="secondary" fullWidth className="sm:w-auto" onClick={() => toggleActive(u)}>
                         {u.active ? 'Deactivate' : 'Activate'}
                       </ActionButton>
-                      <ActionButton size="sm" variant="danger" onClick={() => { deleteUser(u.id); setMessage('User deleted.') }}>
+                      <ActionButton size="sm" variant="danger" fullWidth className="sm:w-auto" onClick={() => { deleteUser(u.id); setMessage('User deleted.') }}>
                         Delete
                       </ActionButton>
-                    </div>
+                    </TableActions>
                   </TableCell>
                 </TableRow>
               ))}

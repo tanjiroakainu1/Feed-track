@@ -72,10 +72,10 @@ export function AdministratorDashboard() {
               {lowStock.map((product) => (
                 <div
                   key={product.id}
-                  className="flex items-center justify-between rounded-xl border border-amber-200/80 bg-gradient-to-r from-amber-50 to-orange-50/50 px-4 py-3"
+                  className="flex items-center justify-between gap-3 rounded-xl border border-amber-200/80 bg-gradient-to-r from-amber-50 to-orange-50/50 px-4 py-3"
                 >
-                  <span className="text-sm font-bold text-slate-900">{product.name}</span>
-                  <span className="rounded-lg bg-amber-100 px-2.5 py-1 text-sm font-bold text-amber-800">
+                  <span className="min-w-0 flex-1 truncate text-sm font-bold text-slate-900">{product.name}</span>
+                  <span className="shrink-0 rounded-lg bg-amber-100 px-2.5 py-1 text-sm font-bold text-amber-800">
                     {product.stock} left
                   </span>
                 </div>
@@ -92,8 +92,8 @@ export function AdministratorDashboard() {
 
       <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         <QuickActionCard to="/administrator/products" label="Manage Products" desc="Add, edit, or remove products" icon="📦" />
-        <QuickActionCard to="/administrator/users" label="Manage Users" desc="Control user accounts and roles" icon="👥" accent="#ca8a04" />
-        <QuickActionCard to="/administrator/reports" label="Generate Reports" desc="Export sales, inventory & forecast reports (₱)" icon="📊" accent="#047857" />
+        <QuickActionCard to="/administrator/users" label="Manage Users" desc="Control user accounts and roles" icon="👥" accent="#78716c" />
+        <QuickActionCard to="/administrator/reports" label="Generate Reports" desc="Export sales, inventory & forecast reports (₱)" icon="📊" accent="#44403c" />
       </div>
 
       {criticalForecasts.length > 0 && (

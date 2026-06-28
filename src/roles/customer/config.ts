@@ -9,4 +9,4 @@ export const CUSTOMER_NAV: NavItem[] = [
   { label: 'Updates', path: 'updates' },
 ]
 
-export const CUSTOMER_COLOR = '#ca8a04'
+export const CUSTOMER_COLOR = '#a8a29e'

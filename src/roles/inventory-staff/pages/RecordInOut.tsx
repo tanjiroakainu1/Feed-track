@@ -53,7 +53,7 @@ export function RecordInOut() {
               </Select>
             </FormField>
             <FormField label="Type">
-              <ButtonGroup className="w-full" stackOnMobile={false}>
+              <ButtonGroup className="w-full">
                 {(['incoming', 'outgoing'] as const).map((t) => (
                   <FilterChip
                     key={t}
@@ -63,7 +63,7 @@ export function RecordInOut() {
                       form.type === t && t === 'outgoing'
                         ? '!bg-gradient-to-r !from-rose-600 !to-red-600 !text-white !shadow-rose-500/30'
                         : form.type === t
-                          ? '!bg-gradient-to-r !from-emerald-600 !to-teal-600 !text-white !shadow-emerald-500/30'
+                          ? '!bg-gradient-to-r !from-stone-600 !to-stone-700 !text-white !shadow-stone-500/30'
                           : ''
                     }
                   >
@@ -100,7 +100,7 @@ export function RecordInOut() {
               <p className="text-sm text-slate-500">No movements recorded yet.</p>
             ) : (
               stockMovements.map((m) => (
-                <ListRow key={m.id} stackOnMobile={false}>
+                <ListRow key={m.id}>
                   <div className="min-w-0">
                     <p className="text-sm font-bold text-slate-900">{m.productName}</p>
                     <p className="truncate text-xs text-slate-500">{m.reason}</p>
@@ -109,7 +109,7 @@ export function RecordInOut() {
                     </p>
                   </div>
                   <span
-                    className={`shrink-0 text-sm font-bold ${m.type === 'incoming' ? 'text-emerald-600' : 'text-red-600'}`}
+                    className={`shrink-0 text-sm font-bold ${m.type === 'incoming' ? 'text-stone-600' : 'text-red-600'}`}
                   >
                     {m.type === 'incoming' ? '+' : '-'}
                     {m.quantity}

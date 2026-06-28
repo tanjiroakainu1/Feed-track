@@ -18,14 +18,14 @@ const variantStyles = {
     value: 'text-amber-800',
   },
   success: {
-    card: 'border-emerald-200/80 bg-gradient-to-br from-emerald-50 to-teal-50/50',
-    icon: 'bg-emerald-100 text-emerald-700',
-    value: 'text-emerald-800',
+    card: 'border-stone-200/80 bg-gradient-to-br from-stone-50 to-stone-100/50',
+    icon: 'bg-stone-100 text-stone-700',
+    value: 'text-stone-800',
   },
   info: {
-    card: 'border-emerald-200/80 bg-gradient-to-br from-emerald-50 to-yellow-50/50',
-    icon: 'bg-emerald-100 text-emerald-700',
-    value: 'text-emerald-800',
+    card: 'border-stone-200/80 bg-gradient-to-br from-stone-50 to-stone-100/50',
+    icon: 'bg-stone-100 text-stone-700',
+    value: 'text-stone-800',
   },
 }
 
@@ -60,7 +60,7 @@ export function StatCard({ label, value, icon, trend, variant = 'default' }: Sta
 
 export function StatGrid({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-5 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2 sm:mb-8 sm:gap-4 lg:grid-cols-4">
+    <div className="mb-5 grid grid-cols-1 gap-3 min-[380px]:grid-cols-2 sm:mb-8 sm:gap-4 lg:grid-cols-4">
       {children}
     </div>
   )

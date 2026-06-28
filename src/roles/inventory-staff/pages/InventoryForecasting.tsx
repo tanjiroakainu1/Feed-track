@@ -90,7 +90,7 @@ function ForecastCard({ forecast }: { forecast: ProductForecast }) {
         </div>
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+      <div className="mt-4 grid grid-cols-2 gap-2 xs:gap-3 min-[480px]:grid-cols-3 lg:grid-cols-6">
         <Metric label="Daily demand" value={`${forecast.dailyDemand} u/d`} />
         <Metric label="Weekly demand" value={`${forecast.weeklyDemand} u/w`} />
         <Metric label="Pipeline" value={`${forecast.pipelineDemand} u`} />
@@ -124,7 +124,7 @@ function ForecastCard({ forecast }: { forecast: ProductForecast }) {
           </p>
         </div>
         {forecast.suggestedReorderQty > 0 && (
-          <span className="inline-flex w-fit rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700 ring-1 ring-emerald-200/60">
+          <span className="inline-flex w-fit rounded-full bg-stone-50 px-3 py-1 text-xs font-bold text-stone-700 ring-1 ring-stone-200/60">
             Restock recommended
           </span>
         )}
@@ -154,16 +154,16 @@ function ProgressBar({
   caption: string
 }) {
   const colors = {
-    success: 'bg-emerald-500',
+    success: 'bg-stone-500',
     warning: 'bg-amber-500',
     danger: 'bg-rose-500',
   }
 
   return (
     <div>
-      <div className="mb-1 flex items-center justify-between gap-2 text-xs">
+      <div className="mb-1 flex flex-col gap-0.5 xs:flex-row xs:items-center xs:justify-between xs:gap-2 text-xs">
         <span className="font-semibold text-slate-600">{label}</span>
-        <span className="text-slate-500">{caption}</span>
+        <span className="break-words text-slate-500">{caption}</span>
       </div>
       <div className="h-2 rounded-full bg-slate-100">
         <div className={`h-2 rounded-full transition-all ${colors[tone]}`} style={{ width: `${value}%` }} />
@@ -175,7 +175,7 @@ function ProgressBar({
 function TrendBadge({ trend, percent }: { trend: ForecastTrend; percent: number }) {
   const styles = {
     rising: 'bg-rose-50 text-rose-700 ring-rose-200/60',
-    falling: 'bg-emerald-50 text-emerald-700 ring-emerald-200/60',
+    falling: 'bg-stone-50 text-stone-700 ring-stone-200/60',
     stable: 'bg-slate-100 text-slate-600 ring-slate-200/60',
   }
   const icons = { rising: '↑', falling: '↓', stable: '→' }
@@ -190,7 +190,7 @@ function TrendBadge({ trend, percent }: { trend: ForecastTrend; percent: number 
 function ConfidenceBadge({ confidence }: { confidence: ForecastConfidence }) {
   const labels = { low: 'Low confidence', medium: 'Medium confidence', high: 'High confidence' }
   return (
-    <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-200/60">
+    <span className="rounded-full bg-stone-50 px-2 py-0.5 text-[11px] font-semibold text-stone-700 ring-1 ring-stone-200/60">
       {labels[confidence]}
     </span>
   )

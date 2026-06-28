@@ -82,7 +82,7 @@ function ReportButton({ label, icon, onClick }: { label: string; icon: string; o
     <button
       type="button"
       onClick={onClick}
-      className="btn-base group min-h-[5rem] w-full rounded-2xl border border-slate-200/80 bg-white p-4 text-left shadow-sm shadow-slate-200/40 transition-all duration-200 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-100/80 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-emerald-500/25 sm:min-h-[5.5rem] sm:p-5"
+      className="btn-base group min-h-[5rem] w-full rounded-2xl border border-slate-200/80 bg-white p-4 text-left shadow-sm shadow-slate-200/40 transition-all duration-200 hover:-translate-y-1 hover:border-stone-300 hover:shadow-lg hover:shadow-stone-100/80 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-stone-500/25 sm:min-h-[5.5rem] sm:p-5"
     >
       <span className="text-xl transition-transform duration-200 group-hover:scale-110 sm:text-2xl">{icon}</span>
       <p className="mt-2 text-sm font-bold text-slate-900">{label}</p>

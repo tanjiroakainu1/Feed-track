@@ -3,12 +3,14 @@ import { FormField, Input } from '../../../components/form'
 import { PageContainer } from '../../../components/PageContainer'
 import {
   ActionButton,
+  ButtonGroup,
   Card,
   CardHeader,
   DataTable,
   EmptyState,
   SuccessBanner,
   Table,
+  TableActions,
   TableBody,
   TableCell,
   TableHead,
@@ -101,14 +103,14 @@ export function ManageProducts() {
             <FormField label="Description">
               <Input value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
             </FormField>
-            <div className="flex gap-2 pt-2">
-              <ActionButton onClick={handleSubmit}>{editingId ? 'Update' : 'Add Product'}</ActionButton>
+            <ButtonGroup className="pt-2">
+              <ActionButton onClick={handleSubmit} fullWidth className="sm:w-auto">{editingId ? 'Update' : 'Add Product'}</ActionButton>
               {editingId && (
-                <ActionButton variant="secondary" onClick={() => { setEditingId(null); setForm(emptyProduct) }}>
+                <ActionButton variant="secondary" fullWidth className="sm:w-auto" onClick={() => { setEditingId(null); setForm(emptyProduct) }}>
                   Cancel
                 </ActionButton>
               )}
-            </div>
+            </ButtonGroup>
           </div>
         </Card>
 
@@ -137,10 +139,10 @@ export function ManageProducts() {
                         </span>
                       </TableCell>
                       <TableCell>
-                        <div className="flex gap-2">
-                          <ActionButton size="sm" variant="secondary" onClick={() => handleEdit(p)}>Edit</ActionButton>
-                          <ActionButton size="sm" variant="danger" onClick={() => handleDelete(p.id)}>Delete</ActionButton>
-                        </div>
+                        <TableActions>
+                          <ActionButton size="sm" variant="secondary" fullWidth className="sm:w-auto" onClick={() => handleEdit(p)}>Edit</ActionButton>
+                          <ActionButton size="sm" variant="danger" fullWidth className="sm:w-auto" onClick={() => handleDelete(p.id)}>Delete</ActionButton>
+                        </TableActions>
                       </TableCell>
                     </TableRow>
                   ))}

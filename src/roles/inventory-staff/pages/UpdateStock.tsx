@@ -98,7 +98,7 @@ export function UpdateStock() {
           <CardHeader title="All Products" />
           <div className="max-h-96 space-y-2 overflow-y-auto">
             {products.map((p) => (
-              <ListRow key={p.id} stackOnMobile={false}>
+              <ListRow key={p.id}>
                 <span className="truncate text-sm font-bold">{p.name}</span>
                 <span
                   className={`shrink-0 text-sm font-bold ${p.stock <= p.lowStockThreshold ? 'text-amber-600' : 'text-slate-700'}`}

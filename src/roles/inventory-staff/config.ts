@@ -9,4 +9,4 @@ export const INVENTORY_NAV: NavItem[] = [
   { label: 'Forecasting', path: 'forecasting' },
 ]
 
-export const INVENTORY_COLOR = '#059669'
+export const INVENTORY_COLOR = '#44403c'

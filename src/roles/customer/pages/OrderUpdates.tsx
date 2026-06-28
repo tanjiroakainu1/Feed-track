@@ -7,8 +7,8 @@ export function OrderUpdates() {
   const updates = getUserNotifications()
 
   const typeStyles: Record<string, string> = {
-    info: 'border-yellow-200 bg-yellow-50',
-    success: 'border-emerald-200 bg-emerald-50',
+    info: 'border-stone-200 bg-stone-100',
+    success: 'border-stone-200 bg-stone-50',
     warning: 'border-amber-200 bg-amber-50',
     error: 'border-red-200 bg-red-50',
   }

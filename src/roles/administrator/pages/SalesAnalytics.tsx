@@ -56,7 +56,7 @@ export function SalesAnalytics() {
                 <span className="w-24 text-sm capitalize text-slate-600">{status}</span>
                 <div className="flex-1 rounded-full bg-slate-100">
                   <div
-                    className="h-6 rounded-full bg-emerald-500 text-right text-xs leading-6 text-white pr-2"
+                    className="h-6 rounded-full bg-stone-500 text-right text-xs leading-6 text-white pr-2"
                     style={{ width: `${Math.max(10, (count / orders.length) * 100)}%` }}
                   >
                     {count}
@@ -71,7 +71,7 @@ export function SalesAnalytics() {
           <CardHeader title="Top Selling Products" />
           <div className="space-y-2">
             {topProducts.map((p) => (
-              <ListRow key={p.id} stackOnMobile={false}>
+              <ListRow key={p.id}>
                 <span className="text-sm font-bold text-slate-900">{p.name}</span>
                 <span className="text-sm font-medium text-slate-600">{p.sold} sold</span>
               </ListRow>
@@ -83,9 +83,9 @@ export function SalesAnalytics() {
           <CardHeader title="Monthly Sales" />
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {Object.entries(monthlySales).map(([month, total]) => (
-              <div key={month} className="rounded-lg bg-emerald-50 p-4 text-center">
-                <p className="text-xs text-emerald-600">{month}</p>
-                <p className="mt-1 text-lg font-bold text-emerald-900">{formatCurrency(total)}</p>
+              <div key={month} className="rounded-lg bg-stone-50 p-4 text-center">
+                <p className="text-xs text-stone-600">{month}</p>
+                <p className="mt-1 text-lg font-bold text-stone-900">{formatCurrency(total)}</p>
               </div>
             ))}
           </div>

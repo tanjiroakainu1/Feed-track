@@ -42,7 +42,7 @@ export function InventoryStaffDashboard() {
         <Card hover>
           <CardHeader
             title="Forecast Priority"
-            action={<PageLink to="/inventory-staff/forecasting" accent="emerald">Full forecast →</PageLink>}
+            action={<PageLink to="/inventory-staff/forecasting" accent="stone">Full forecast →</PageLink>}
           />
           {criticalForecasts.length === 0 ? (
             <EmptyState message="No urgent reorder forecasts at this time." icon="✅" />
@@ -69,7 +69,7 @@ export function InventoryStaffDashboard() {
         <Card hover>
           <CardHeader
             title="Items Needing Attention"
-            action={<PageLink to="/inventory-staff/alerts" accent="emerald">View alerts →</PageLink>}
+            action={<PageLink to="/inventory-staff/alerts" accent="stone">View alerts →</PageLink>}
           />
           {lowStock.length === 0 ? (
             <EmptyState message="All stock levels are healthy." icon="✅" />
@@ -78,10 +78,10 @@ export function InventoryStaffDashboard() {
               {lowStock.map((p) => (
                 <div
                   key={p.id}
-                  className="flex justify-between rounded-xl border border-amber-200/80 bg-gradient-to-r from-amber-50 to-orange-50/50 px-4 py-3"
+                  className="flex items-center justify-between gap-3 rounded-xl border border-amber-200/80 bg-gradient-to-r from-amber-50 to-orange-50/50 px-4 py-3"
                 >
-                  <span className="text-sm font-bold text-slate-900">{p.name}</span>
-                  <span className="text-sm font-bold text-amber-800">
+                  <span className="min-w-0 flex-1 truncate text-sm font-bold text-slate-900">{p.name}</span>
+                  <span className="shrink-0 text-sm font-bold text-amber-800">
                     {p.stock} / {p.lowStockThreshold}
                   </span>
                 </div>
@@ -94,7 +94,7 @@ export function InventoryStaffDashboard() {
       <Card hover>
         <CardHeader
           title="Recent Movements"
-          action={<PageLink to="/inventory-staff/record" accent="emerald">Record →</PageLink>}
+          action={<PageLink to="/inventory-staff/record" accent="stone">Record →</PageLink>}
         />
         <div className="space-y-2">
           {recentMovements.length === 0 ? (
@@ -108,7 +108,7 @@ export function InventoryStaffDashboard() {
                 </div>
                 <div className="text-right">
                   <span
-                    className={`text-sm font-bold ${m.type === 'incoming' ? 'text-emerald-600' : 'text-rose-600'}`}
+                    className={`text-sm font-bold ${m.type === 'incoming' ? 'text-stone-600' : 'text-rose-600'}`}
                   >
                     {m.type === 'incoming' ? '+' : '-'}
                     {m.quantity}

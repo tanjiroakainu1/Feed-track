@@ -1,16 +1,16 @@
-/** Feed track — Yellow & Emerald brand theme */
+/** Feed track — Ash gray theme */
 export const THEME = {
-  primary: '#059669',
-  primaryLight: '#10b981',
-  primaryDark: '#047857',
-  accent: '#eab308',
-  accentDark: '#ca8a04',
-  accentWarm: '#f59e0b',
+  primary: '#57534e',
+  primaryLight: '#78716c',
+  primaryDark: '#44403c',
+  accent: '#a8a29e',
+  accentDark: '#78716c',
+  accentWarm: '#92877a',
 } as const
 
 export const ROLE_COLORS = {
-  administrator: '#059669',
-  'inventory-staff': '#047857',
-  'sales-order-staff': '#d97706',
-  customer: '#ca8a04',
+  administrator: '#57534e',
+  'inventory-staff': '#44403c',
+  'sales-order-staff': '#78716c',
+  customer: '#a8a29e',
 } as const

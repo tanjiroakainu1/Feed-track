@@ -41,7 +41,7 @@ export function CustomerDashboard() {
         <Card hover>
           <CardHeader
             title="Recent Orders"
-            action={<PageLink to="/customer/history" accent="yellow">View history →</PageLink>}
+            action={<PageLink to="/customer/history" accent="slate">View history →</PageLink>}
           />
           {myOrders.length === 0 ? (
             <EmptyState message="No orders yet. Start shopping!" icon="🛒" />
@@ -66,7 +66,7 @@ export function CustomerDashboard() {
         <Card hover>
           <CardHeader
             title="Featured Products"
-            action={<PageLink to="/customer/browse" accent="yellow">Browse all →</PageLink>}
+            action={<PageLink to="/customer/browse" accent="slate">Browse all →</PageLink>}
           />
           <div className="space-y-3">
             {products.slice(0, 4).map((p) => (

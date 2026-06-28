@@ -9,4 +9,4 @@ export const SALES_NAV: NavItem[] = [
   { label: 'Inventory Coord.', path: 'coordination' },
 ]
 
-export const SALES_COLOR = '#d97706'
+export const SALES_COLOR = '#78716c'
