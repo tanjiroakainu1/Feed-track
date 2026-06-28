@@ -29,7 +29,7 @@ export function TrackOrder() {
   return (
     <PageContainer title="Track Order Status" description="Follow your order through each stage">
       {myOrders.length === 0 ? (
-        <EmptyState message="No orders to track." icon="📦" />
+        <EmptyState message="No orders to track." icon="product" />
       ) : (
         <>
           <div className="mb-6 max-w-md">

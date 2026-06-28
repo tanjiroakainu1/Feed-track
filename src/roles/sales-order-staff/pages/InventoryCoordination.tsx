@@ -49,7 +49,7 @@ export function InventoryCoordination() {
         <Card>
           <CardHeader title="Stock Availability for Active Orders" />
           {stockChecks.length === 0 ? (
-            <EmptyState message="No active orders require stock checks." icon="✅" />
+            <EmptyState message="No active orders require stock checks." icon="check" />
           ) : (
             <div className="space-y-3">
               {stockChecks.map((check, i) => (
@@ -80,7 +80,7 @@ export function InventoryCoordination() {
         <Card>
           <CardHeader title="Low Stock Items Affecting Orders" />
           {lowStock.length === 0 ? (
-            <EmptyState message="No low stock concerns." icon="✅" />
+            <EmptyState message="No low stock concerns." icon="check" />
           ) : (
             <div className="space-y-3">
               {lowStock.map((p) => (

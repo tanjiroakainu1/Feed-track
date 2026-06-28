@@ -72,7 +72,7 @@ export function UserManagement() {
       </Card>
 
       {users.length === 0 ? (
-        <EmptyState message="No users found." icon="👥" />
+        <EmptyState message="No users found." icon="users" />
       ) : (
         <DataTable>
           <Table>

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import type { IconName } from './FormalIcon'
+import { FormalIcon } from './FormalIcon'
 import { THEME } from '../config/theme'
 import type { OrderStatus } from '../types'
 import type { Order } from '../types'
@@ -238,10 +240,12 @@ export function CardHeader({
   )
 }
 
-export function EmptyState({ message, icon = '📭' }: { message: string; icon?: string }) {
+export function EmptyState({ message, icon = 'empty' }: { message: string; icon?: IconName }) {
   return (
     <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/80 px-4 py-10 text-center sm:px-6 sm:py-14">
-      <span className="mb-3 text-2xl sm:text-3xl">{icon}</span>
+      <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-slate-500">
+        <FormalIcon name={icon} size={24} />
+      </div>
       <p className="max-w-xs text-sm font-medium text-slate-500">{message}</p>
     </div>
   )
@@ -326,7 +330,7 @@ export function QuickActionCard({
   to: string
   label: string
   desc: string
-  icon?: string
+  icon?: IconName
   accent?: string
 }) {
   return (
@@ -337,10 +341,10 @@ export function QuickActionCard({
       <div className="flex items-start gap-3">
         {icon && (
           <div
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-base sm:h-11 sm:w-11 sm:text-lg"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl sm:h-11 sm:w-11"
             style={{ backgroundColor: `${accent}15`, color: accent }}
           >
-            {icon}
+            <FormalIcon name={icon} size={22} />
           </div>
         )}
         <div className="min-w-0">

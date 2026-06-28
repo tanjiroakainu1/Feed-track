@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { APP_ICON, APP_NAME } from '../config/app'
+import { APP_NAME } from '../config/app'
+import { BrandMark } from './FormalIcon'
 
 interface HeaderBrandProps {
   tone?: 'light' | 'dark'
@@ -10,7 +11,9 @@ interface HeaderBrandProps {
 export function HeaderBrand({ tone = 'light', onClick, subtitle = 'Feed supply platform' }: HeaderBrandProps) {
   const content = (
     <>
-      <span className={`header-brand-mark ${tone === 'dark' ? 'header-brand-mark-dark' : ''}`}>{APP_ICON}</span>
+      <span className={`header-brand-mark text-xs font-extrabold tracking-tight ${tone === 'dark' ? 'header-brand-mark-dark' : ''}`}>
+        <BrandMark />
+      </span>
       <div className="min-w-0">
         <span
           className={`block truncate text-sm font-extrabold tracking-tight sm:text-base ${

@@ -116,7 +116,7 @@ export function ManageProducts() {
 
         <div className="lg:col-span-2">
           {products.length === 0 ? (
-            <EmptyState message="No products yet. Add your first product." icon="📦" />
+            <EmptyState message="No products yet. Add your first product." icon="product" />
           ) : (
             <DataTable>
               <Table>

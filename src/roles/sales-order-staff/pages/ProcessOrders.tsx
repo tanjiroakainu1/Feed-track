@@ -19,7 +19,7 @@ export function ProcessOrders() {
       <SuccessBanner message={message} />
 
       {processable.length === 0 ? (
-        <EmptyState message="No orders ready for processing." icon="📦" />
+        <EmptyState message="No orders ready for processing." icon="product" />
       ) : (
         <div className="space-y-4">
           {processable.map((order) => (

@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { APP_DOCUMENT_TITLE } from './config/app'
+import { FloatingChatbot } from './components/FloatingChatbot'
 import { FloatingParticles } from './components/FloatingParticles'
 import { HomeRedirect, ProtectedRoute } from './components/ProtectedRoute'
 import { AppProvider } from './context/AppContext'
@@ -59,6 +60,7 @@ export default function App() {
                 }
               />
             </Routes>
+            <FloatingChatbot />
           </BrowserRouter>
         </div>
       </div>

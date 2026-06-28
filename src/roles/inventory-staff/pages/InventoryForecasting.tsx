@@ -31,13 +31,13 @@ export function InventoryForecasting() {
       description={`Demand forecasting using weighted consumption, pipeline orders, safety stock, and reorder point (ROP) analysis over a ${FORECAST_WINDOW_DAYS}-day window.`}
     >
       <StatGrid>
-        <StatCard label="Critical Items" value={critical} icon="🚨" variant={critical > 0 ? 'warning' : 'success'} />
-        <StatCard label="Watch List" value={warning} icon="⚠️" variant={warning > 0 ? 'warning' : 'default'} />
-        <StatCard label="Products Tracked" value={forecasts.length} icon="📦" variant="info" />
+        <StatCard label="Critical Items" value={critical} icon="alert" variant={critical > 0 ? 'warning' : 'success'} />
+        <StatCard label="Watch List" value={warning} icon="alert" variant={warning > 0 ? 'warning' : 'default'} />
+        <StatCard label="Products Tracked" value={forecasts.length} icon="product" variant="info" />
         <StatCard
           label="Est. Reorder Value"
           value={formatCurrency(reorderValue)}
-          icon="💰"
+          icon="money"
           trend="Suggested restock spend"
         />
       </StatGrid>
@@ -55,7 +55,7 @@ export function InventoryForecasting() {
       </Card>
 
       {forecasts.length === 0 ? (
-        <EmptyState message="No products available for forecasting." icon="📈" />
+        <EmptyState message="No products available for forecasting." icon="chart" />
       ) : (
         <div className="space-y-4">
           {forecasts.map((forecast) => (

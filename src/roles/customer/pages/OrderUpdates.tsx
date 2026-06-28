@@ -16,7 +16,7 @@ export function OrderUpdates() {
   return (
     <PageContainer title="Order Updates" description="Notifications about your orders">
       {updates.length === 0 ? (
-        <EmptyState message="No order updates at this time." icon="🔔" />
+        <EmptyState message="No order updates at this time." icon="bell" />
       ) : (
         <div className="space-y-3">
           {updates.map((n) => (

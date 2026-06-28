@@ -31,10 +31,10 @@ export function CustomerDashboard() {
       description={`Welcome back${currentUser ? `, ${currentUser.name}` : ''}! Browse feed products and manage your orders. Prices in Philippine Peso (₱).`}
     >
       <StatGrid>
-        <StatCard label="Available Products" value={products.length} icon="🛍️" variant="info" />
-        <StatCard label="My Orders" value={myOrders.length} icon="📦" />
-        <StatCard label="Active Orders" value={activeOrders.length} icon="🚚" variant="info" />
-        <StatCard label="Notifications" value={unread} icon="🔔" variant={unread > 0 ? 'warning' : 'default'} />
+        <StatCard label="Available Products" value={products.length} icon="shop" variant="info" />
+        <StatCard label="My Orders" value={myOrders.length} icon="product" />
+        <StatCard label="Active Orders" value={activeOrders.length} icon="truck" variant="info" />
+        <StatCard label="Notifications" value={unread} icon="bell" variant={unread > 0 ? 'warning' : 'default'} />
       </StatGrid>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -44,7 +44,7 @@ export function CustomerDashboard() {
             action={<PageLink to="/customer/history" accent="slate">View history →</PageLink>}
           />
           {myOrders.length === 0 ? (
-            <EmptyState message="No orders yet. Start shopping!" icon="🛒" />
+            <EmptyState message="No orders yet. Start shopping!" icon="cart" />
           ) : (
             <div className="space-y-3">
               {myOrders.slice(0, 4).map((o) => (

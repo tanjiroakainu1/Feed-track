@@ -27,13 +27,13 @@ export function InventoryStaffDashboard() {
       description={`Welcome${currentUser ? `, ${currentUser.name}` : ''}. Overview of feed stock levels, forecasting, and warehouse activity. All amounts in Philippine Peso (₱).`}
     >
       <StatGrid>
-        <StatCard label="Total Products" value={products.length} icon="📦" />
-        <StatCard label="Total Stock Units" value={totalStock} icon="📊" variant="info" />
-        <StatCard label="Low Stock Items" value={lowStock.length} icon="⚠️" variant="warning" />
+        <StatCard label="Total Products" value={products.length} icon="product" />
+        <StatCard label="Total Stock Units" value={totalStock} icon="chart" variant="info" />
+        <StatCard label="Low Stock Items" value={lowStock.length} icon="alert" variant="warning" />
         <StatCard
           label="Forecast Alerts"
           value={forecasts.filter((f) => f.status !== 'good').length}
-          icon="🔮"
+          icon="forecast"
           variant={criticalForecasts.length > 0 ? 'warning' : 'default'}
         />
       </StatGrid>
@@ -45,7 +45,7 @@ export function InventoryStaffDashboard() {
             action={<PageLink to="/inventory-staff/forecasting" accent="stone">Full forecast →</PageLink>}
           />
           {criticalForecasts.length === 0 ? (
-            <EmptyState message="No urgent reorder forecasts at this time." icon="✅" />
+            <EmptyState message="No urgent reorder forecasts at this time." icon="check" />
           ) : (
             <div className="space-y-2">
               {criticalForecasts.map((f) => (
@@ -72,7 +72,7 @@ export function InventoryStaffDashboard() {
             action={<PageLink to="/inventory-staff/alerts" accent="stone">View alerts →</PageLink>}
           />
           {lowStock.length === 0 ? (
-            <EmptyState message="All stock levels are healthy." icon="✅" />
+            <EmptyState message="All stock levels are healthy." icon="check" />
           ) : (
             <div className="space-y-2">
               {lowStock.map((p) => (
@@ -98,7 +98,7 @@ export function InventoryStaffDashboard() {
         />
         <div className="space-y-2">
           {recentMovements.length === 0 ? (
-            <EmptyState message="No stock movements recorded yet." icon="🔄" />
+            <EmptyState message="No stock movements recorded yet." icon="refresh" />
           ) : (
             recentMovements.map((m) => (
               <ListRow key={m.id}>

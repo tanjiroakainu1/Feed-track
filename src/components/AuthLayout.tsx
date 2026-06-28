@@ -24,12 +24,14 @@ export function AuthLayout({ title, subtitle, children, footer, extra }: AuthLay
           </div>
         </div>
         <div className="relative grid max-w-md grid-cols-2 gap-4">
-          {APP_FEATURES.map((item) => (
+          {APP_FEATURES.map((item, index) => (
             <div
               key={item.label}
               className="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10 backdrop-blur-sm"
             >
-              <span className="text-xl">{item.icon}</span>
+              <p className="text-[10px] font-bold uppercase tracking-wider text-stone-300/80">
+                Feature {String(index + 1).padStart(2, '0')}
+              </p>
               <p className="mt-2 text-sm font-semibold text-white/90">{item.label}</p>
               <p className="mt-1 text-xs leading-relaxed text-stone-100/70">{item.description}</p>
             </div>

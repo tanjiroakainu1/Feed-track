@@ -40,7 +40,7 @@ export function BrowseProducts() {
       </FilterBar>
 
       {filtered.length === 0 ? (
-        <EmptyState message="No products match your search." icon="🔍" />
+        <EmptyState message="No products match your search." icon="search" />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {filtered.map((p) => (

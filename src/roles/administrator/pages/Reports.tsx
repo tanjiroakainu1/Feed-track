@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import type { IconName } from '../../../components/FormalIcon'
+import { FormalIcon } from '../../../components/FormalIcon'
 import { PageContainer } from '../../../components/PageContainer'
 import { ActionButton, Card, CardHeader, formatCurrency } from '../../../components/ui'
 import { useApp } from '../../../context/AppContext'
@@ -55,11 +57,11 @@ export function Reports() {
       description="Create and export business reports. All monetary values in Philippine Peso (₱)."
     >
       <div className="mb-6 grid grid-cols-1 gap-3 min-[380px]:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-5">
-        <ReportButton label="Sales Report" icon="💰" onClick={() => generateReport('sales')} />
-        <ReportButton label="Inventory Report" icon="📦" onClick={() => generateReport('inventory')} />
-        <ReportButton label="Forecast Report" icon="🔮" onClick={() => generateReport('forecast')} />
-        <ReportButton label="Users Report" icon="👥" onClick={() => generateReport('users')} />
-        <ReportButton label="Orders Report" icon="📋" onClick={() => generateReport('orders')} />
+        <ReportButton label="Sales Report" icon="money" onClick={() => generateReport('sales')} />
+        <ReportButton label="Inventory Report" icon="product" onClick={() => generateReport('inventory')} />
+        <ReportButton label="Forecast Report" icon="forecast" onClick={() => generateReport('forecast')} />
+        <ReportButton label="Users Report" icon="users" onClick={() => generateReport('users')} />
+        <ReportButton label="Orders Report" icon="orders" onClick={() => generateReport('orders')} />
       </div>
 
       {generated && (
@@ -77,14 +79,16 @@ export function Reports() {
   )
 }
 
-function ReportButton({ label, icon, onClick }: { label: string; icon: string; onClick: () => void }) {
+function ReportButton({ label, icon, onClick }: { label: string; icon: IconName; onClick: () => void }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className="btn-base group min-h-[5rem] w-full rounded-2xl border border-slate-200/80 bg-white p-4 text-left shadow-sm shadow-slate-200/40 transition-all duration-200 hover:-translate-y-1 hover:border-stone-300 hover:shadow-lg hover:shadow-stone-100/80 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-stone-500/25 sm:min-h-[5.5rem] sm:p-5"
     >
-      <span className="text-xl transition-transform duration-200 group-hover:scale-110 sm:text-2xl">{icon}</span>
+      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-stone-50 text-stone-600 transition-transform duration-200 group-hover:scale-110">
+        <FormalIcon name={icon} size={22} />
+      </div>
       <p className="mt-2 text-sm font-bold text-slate-900">{label}</p>
       <p className="mt-0.5 text-[11px] text-slate-500 sm:text-xs">Tap to generate</p>
     </button>

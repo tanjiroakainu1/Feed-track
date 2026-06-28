@@ -16,7 +16,7 @@ export function LowStockNotifications() {
         <Card>
           <CardHeader title="Products Below Threshold" />
           {lowStock.length === 0 ? (
-            <EmptyState message="No low stock items at this time." icon="✅" />
+            <EmptyState message="No low stock items at this time." icon="check" />
           ) : (
             <div className="space-y-3">
               {lowStock.map((p) => (
@@ -38,7 +38,7 @@ export function LowStockNotifications() {
         <Card>
           <CardHeader title="Notification History" />
           {alerts.length === 0 ? (
-            <EmptyState message="No alerts recorded." icon="🔔" />
+            <EmptyState message="No alerts recorded." icon="bell" />
           ) : (
             <div className="space-y-3">
               {alerts.map((n) => (

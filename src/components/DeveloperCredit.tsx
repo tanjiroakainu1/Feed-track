@@ -77,12 +77,14 @@ export function DeveloperCredit({ variant = 'compact', className = '' }: Develop
               {PLATFORM.description}
             </p>
             <div className="mt-6 grid grid-cols-2 gap-3">
-              {PLATFORM.pillars.map((pillar) => (
+              {PLATFORM.pillars.map((pillar, index) => (
                 <div
                   key={pillar.label}
                   className="rounded-2xl bg-white/10 p-3 ring-1 ring-white/15 backdrop-blur-sm sm:p-4"
                 >
-                  <span className="text-lg">{pillar.icon}</span>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-stone-200/80">
+                    {String(index + 1).padStart(2, '0')}
+                  </p>
                   <p className="mt-1 text-xs font-bold text-white sm:text-sm">{pillar.label}</p>
                   <p className="mt-0.5 text-[10px] leading-snug text-stone-100/75 sm:text-xs">{pillar.detail}</p>
                 </div>
@@ -94,9 +96,6 @@ export function DeveloperCredit({ variant = 'compact', className = '' }: Develop
             <div className="flex flex-col items-center text-center">
               <div className="developer-avatar relative mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-white/20 to-white/5 text-2xl font-black text-white shadow-2xl ring-2 ring-white/30 sm:h-24 sm:w-24 sm:text-3xl">
                 {DEVELOPER.initials}
-                <span className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-stone-400 text-sm text-stone-950 shadow-lg ring-2 ring-white/50">
-                  ✦
-                </span>
               </div>
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-stone-200">Developer</p>
               <h4 className="mt-1 text-2xl font-extrabold text-white sm:text-3xl">{DEVELOPER.name}</h4>

@@ -112,10 +112,10 @@ export function Home() {
                       />
                       <div className="flex items-start gap-3 sm:block">
                         <span
-                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg sm:mx-auto sm:mb-3"
+                          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-extrabold sm:mx-auto sm:mb-3"
                           style={{ backgroundColor: `${step.accent}18`, color: step.accent }}
                         >
-                          {step.icon}
+                          {String(step.step).padStart(2, '0')}
                         </span>
                         <div className={index % 2 === 0 ? 'sm:text-right' : 'sm:text-left'}>
                           <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
@@ -194,11 +194,11 @@ export function Home() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:gap-6">
-            {APP_FEATURES.map((feature) => (
+            {APP_FEATURES.map((feature, index) => (
               <Card key={feature.label} hover padding="compact">
                 <div className="flex gap-4">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-stone-50 text-2xl">
-                    {feature.icon}
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-stone-50 text-sm font-extrabold text-stone-600">
+                    {String(index + 1).padStart(2, '0')}
                   </span>
                   <div>
                     <h3 className="font-bold text-slate-900">{feature.label}</h3>

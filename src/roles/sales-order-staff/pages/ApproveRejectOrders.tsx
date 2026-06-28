@@ -34,7 +34,7 @@ export function ApproveRejectOrders() {
       <SuccessBanner message={message} />
 
       {pending.length === 0 ? (
-        <EmptyState message="No pending orders to approve or reject." icon="✅" />
+        <EmptyState message="No pending orders to approve or reject." icon="check" />
       ) : (
         <div className="space-y-4">
           {pending.map((order) => (

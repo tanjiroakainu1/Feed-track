@@ -1,7 +1,10 @@
+import type { IconName } from './FormalIcon'
+import { FormalIcon } from './FormalIcon'
+
 interface StatCardProps {
   label: string
   value: string | number
-  icon?: string
+  icon?: IconName
   trend?: string
   variant?: 'default' | 'warning' | 'success' | 'info'
 }
@@ -48,9 +51,9 @@ export function StatCard({ label, value, icon, trend, variant = 'default' }: Sta
         </div>
         {icon && (
           <div
-            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-lg transition-transform duration-200 group-hover:scale-110 sm:h-12 sm:w-12 sm:rounded-2xl sm:text-xl ${styles.icon}`}
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-110 sm:h-12 sm:w-12 sm:rounded-2xl ${styles.icon}`}
           >
-            {icon}
+            <FormalIcon name={icon} size={22} />
           </div>
         )}
       </div>

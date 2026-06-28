@@ -18,7 +18,7 @@ export function LowStockAlerts() {
         <div>
           <CardHeader title="Active Alerts" />
           {lowStock.length === 0 ? (
-            <EmptyState message="No active low stock alerts." icon="✅" />
+            <EmptyState message="No active low stock alerts." icon="check" />
           ) : (
             <div className="space-y-3">
               {lowStock.map((p) => (
@@ -41,7 +41,7 @@ export function LowStockAlerts() {
         <div>
           <CardHeader title="Alert Notifications" />
           {alerts.length === 0 ? (
-            <EmptyState message="No notifications." icon="🔔" />
+            <EmptyState message="No notifications." icon="bell" />
           ) : (
             <div className="space-y-3">
               {alerts.map((n) => (

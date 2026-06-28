@@ -28,10 +28,10 @@ export function AdministratorDashboard() {
       description={`Welcome${currentUser ? `, ${currentUser.name}` : ''}. Overview of feed store operations, sales, and inventory. All amounts in Philippine Peso (₱).`}
     >
       <StatGrid>
-        <StatCard label="Total Sales" value={formatCurrency(reportSummary.totalSales)} icon="💰" variant="success" />
-        <StatCard label="Total Orders" value={reportSummary.totalOrders} icon="📋" />
-        <StatCard label="Pending Orders" value={reportSummary.pendingOrders} icon="⏳" variant="warning" />
-        <StatCard label="Low Stock Items" value={reportSummary.lowStockCount} icon="⚠️" variant="warning" />
+        <StatCard label="Total Sales" value={formatCurrency(reportSummary.totalSales)} icon="money" variant="success" />
+        <StatCard label="Total Orders" value={reportSummary.totalOrders} icon="orders" />
+        <StatCard label="Pending Orders" value={reportSummary.pendingOrders} icon="clock" variant="warning" />
+        <StatCard label="Low Stock Items" value={reportSummary.lowStockCount} icon="alert" variant="warning" />
       </StatGrid>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -42,7 +42,7 @@ export function AdministratorDashboard() {
           />
           <div className="space-y-3">
             {recentOrders.length === 0 ? (
-              <EmptyState message="No orders recorded yet." icon="📋" />
+              <EmptyState message="No orders recorded yet." icon="orders" />
             ) : (
               recentOrders.map((order) => (
                 <ListRow key={order.id}>
@@ -66,7 +66,7 @@ export function AdministratorDashboard() {
             action={<PageLink to="/administrator/low-stock">Manage →</PageLink>}
           />
           {lowStock.length === 0 ? (
-            <EmptyState message="All products are adequately stocked." icon="✅" />
+            <EmptyState message="All products are adequately stocked." icon="check" />
           ) : (
             <div className="space-y-3">
               {lowStock.map((product) => (
@@ -91,9 +91,9 @@ export function AdministratorDashboard() {
       </div>
 
       <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-        <QuickActionCard to="/administrator/products" label="Manage Products" desc="Add, edit, or remove products" icon="📦" />
-        <QuickActionCard to="/administrator/users" label="Manage Users" desc="Control user accounts and roles" icon="👥" accent="#78716c" />
-        <QuickActionCard to="/administrator/reports" label="Generate Reports" desc="Export sales, inventory & forecast reports (₱)" icon="📊" accent="#44403c" />
+        <QuickActionCard to="/administrator/products" label="Manage Products" desc="Add, edit, or remove products" icon="product" />
+        <QuickActionCard to="/administrator/users" label="Manage Users" desc="Control user accounts and roles" icon="users" accent="#78716c" />
+        <QuickActionCard to="/administrator/reports" label="Generate Reports" desc="Export sales, inventory & forecast reports (₱)" icon="chart" accent="#44403c" />
       </div>
 
       {criticalForecasts.length > 0 && (

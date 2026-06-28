@@ -37,13 +37,13 @@ export function SalesAnalytics() {
       description="Monitor sales performance and business metrics. Revenue shown in Philippine Peso (₱)."
     >
       <StatGrid>
-        <StatCard label="Total Revenue" value={formatCurrency(reportSummary.totalSales)} icon="💰" variant="success" />
-        <StatCard label="Total Orders" value={reportSummary.totalOrders} icon="📋" />
-        <StatCard label="Active Users" value={reportSummary.activeUsers} icon="👥" variant="info" />
+        <StatCard label="Total Revenue" value={formatCurrency(reportSummary.totalSales)} icon="money" variant="success" />
+        <StatCard label="Total Orders" value={reportSummary.totalOrders} icon="orders" />
+        <StatCard label="Active Users" value={reportSummary.activeUsers} icon="users" variant="info" />
         <StatCard
           label="Avg Order Value"
           value={formatCurrency(reportSummary.totalSales / (orders.filter((o) => o.status === 'completed').length || 1))}
-          icon="📈"
+          icon="chart"
         />
       </StatGrid>
 

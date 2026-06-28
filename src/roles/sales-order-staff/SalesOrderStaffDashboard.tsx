@@ -28,10 +28,10 @@ export function SalesOrderStaffDashboard() {
       description={`Welcome${currentUser ? `, ${currentUser.name}` : ''}. Overview of feed supply orders requiring attention. Amounts in ₱.`}
     >
       <StatGrid>
-        <StatCard label="Pending Orders" value={pending.length} icon="⏳" variant="warning" />
-        <StatCard label="Processing" value={processing.length} icon="🔄" variant="info" />
-        <StatCard label="Today's Orders" value={todayOrders.length} icon="📅" />
-        <StatCard label="New Notifications" value={unread} icon="🔔" variant={unread > 0 ? 'warning' : 'default'} />
+        <StatCard label="Pending Orders" value={pending.length} icon="clock" variant="warning" />
+        <StatCard label="Processing" value={processing.length} icon="refresh" variant="info" />
+        <StatCard label="Today's Orders" value={todayOrders.length} icon="clock" />
+        <StatCard label="New Notifications" value={unread} icon="bell" variant={unread > 0 ? 'warning' : 'default'} />
       </StatGrid>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -41,7 +41,7 @@ export function SalesOrderStaffDashboard() {
             action={<PageLink to="/sales-order-staff/review" accent="amber">Review all →</PageLink>}
           />
           {pending.length === 0 ? (
-            <EmptyState message="No pending orders." icon="✅" />
+            <EmptyState message="No pending orders." icon="check" />
           ) : (
             <div className="space-y-3">
               {pending.slice(0, 5).map((o) => (
@@ -67,7 +67,7 @@ export function SalesOrderStaffDashboard() {
           />
           <div className="space-y-3">
             {orders.length === 0 ? (
-              <EmptyState message="No order activity yet." icon="📋" />
+              <EmptyState message="No order activity yet." icon="orders" />
             ) : (
               orders.slice(0, 5).map((o) => (
                 <ListRow key={o.id}>

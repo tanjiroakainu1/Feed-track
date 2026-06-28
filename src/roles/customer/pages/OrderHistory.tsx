@@ -9,7 +9,7 @@ export function OrderHistory() {
   return (
     <PageContainer title="Order History" description="View all your past and current orders">
       {myOrders.length === 0 ? (
-        <EmptyState message="You haven't placed any orders yet." icon="🛒" />
+        <EmptyState message="You haven't placed any orders yet." icon="cart" />
       ) : (
         <div className="space-y-4">
           {myOrders.map((order) => (

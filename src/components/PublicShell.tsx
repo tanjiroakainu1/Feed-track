@@ -142,7 +142,7 @@ export function PublicFooter() {
               <p className="text-xs font-bold uppercase tracking-wider text-stone-400">Platform</p>
               <ul className="mt-3 space-y-2 text-sm font-medium text-stone-600">
                 {PLATFORM.pillars.map((p) => (
-                  <li key={p.label}>{p.icon} {p.label}</li>
+                  <li key={p.label}>{p.label}</li>
                 ))}
               </ul>
             </div>

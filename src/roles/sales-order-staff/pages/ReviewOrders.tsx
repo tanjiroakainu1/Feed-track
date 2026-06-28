@@ -18,7 +18,7 @@ export function ReviewOrders() {
   return (
     <PageContainer title="Review Customer Orders" description="Inspect order details before approval">
       {orders.length === 0 ? (
-        <EmptyState message="No orders to review." icon="📋" />
+        <EmptyState message="No orders to review." icon="orders" />
       ) : (
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="space-y-2 sm:space-y-3">
@@ -86,7 +86,7 @@ export function ReviewOrders() {
                 </div>
               </>
             ) : (
-              <EmptyState message="Select an order to view details." icon="👆" />
+              <EmptyState message="Select an order to view details." icon="select" />
             )}
           </Card>
         </div>
